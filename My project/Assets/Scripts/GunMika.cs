@@ -8,6 +8,8 @@ public class GunMika : MonoBehaviour
     public GameObject ballePrefab;
     public float vitesseBalles = 10;
     public ParticleSystem tirFeu;
+    public AudioClip gunshot;
+    public AudioSource audioSource;
 
     void Update()
     {
@@ -20,6 +22,7 @@ public class GunMika : MonoBehaviour
     void Shoot()
     {
         tirFeu.Play();
+        audioSource.PlayOneShot(gunshot, 0.7F);
         var balle = Instantiate(ballePrefab, spawnBalle.position, spawnBalle.rotation);
         balle.GetComponent<Rigidbody>().velocity = spawnBalle.forward * vitesseBalles;
         Destroy(balle, 5f);
