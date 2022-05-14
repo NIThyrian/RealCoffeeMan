@@ -78,7 +78,7 @@ public class Room : MonoBehaviour
 
             Vector3 position = transform.position + new Vector3(dx, 0, dz);
 
-            int numberGenerated = Random.Range(1, 3);
+            int numberGenerated = Random.Range(1, 2);
             int counterGenerated = 1;
             while (counterGenerated <= numberGenerated)
             {
