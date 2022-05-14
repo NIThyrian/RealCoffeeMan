@@ -544,6 +544,9 @@ MonoBehaviour:
   doors: []
   baril: {fileID: 1527297205147476436, guid: e27656d60759bc546a44137ca8060659, type: 3}
   roomColor: {r: 0, g: 0, b: 0, a: 0}
+  maxBarilPerRoom: 6
+  minBarilPerRoom: 2
+  roomType: 0
 --- !u!1 &5129759986425671467
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +655,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8203201672904333712, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -694,6 +705,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8203201672904333712, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731301232823456334, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019858553680649558, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184365050465475595, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
