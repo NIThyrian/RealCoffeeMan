@@ -547,12 +547,25 @@ MonoBehaviour:
   props:
   - {fileID: 6995401850718818081, guid: ccc2fce18e961cf438c8855ed3b56daa, type: 3}
   - {fileID: 5527408754918517715, guid: 09531533bd69a774ca85e66be9e0c907, type: 3}
+  - {fileID: 9149082666431651407, guid: 40cade015956c5844bf85c104e1c0ef2, type: 3}
+  - {fileID: 999824884274540341, guid: da6985a80a7053747bb47f9648ec6cc8, type: 3}
+  - {fileID: 4584906343758680236, guid: e7eb3c81a3d1d5b4fbb84058a33dc5ba, type: 3}
+  - {fileID: 5800889737027187301, guid: b3a2e1bd6456fe74582904552e556b14, type: 3}
+  - {fileID: 3710729917388956080, guid: a91fe75d15f73f54cb2357f9569a2117, type: 3}
+  - {fileID: 1909547928257965523, guid: 7369958e9873afc4c9a03e42f7c1f1c1, type: 3}
+  - {fileID: 4207504370777256383, guid: 4849764351adc3f49b267a5e67597aba, type: 3}
   portal: {fileID: 8276839334163216304, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
   spawnPositions:
   - {x: -20, y: 0, z: 20}
   - {x: -3, y: 0, z: -10}
   - {x: 14, y: 0, z: 7}
   - {x: -3, y: 0, z: 10}
+  - {x: 3, y: 0, z: 20}
+  - {x: -12, y: 0, z: 14}
+  - {x: -20, y: 0, z: -20}
+  - {x: 19, y: 0, z: 23}
+  - {x: -14, y: 0, z: -14}
+  - {x: 18, y: 0, z: -4}
   roomColor: {r: 0, g: 0, b: 0, a: 0}
   maxBarilPerRoom: 6
   minBarilPerRoom: 2
