@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    private float speed = 12f;
+    private float speed = 20f;
     private float jumpHeight = 5f;
     private Vector3 velocity;
     private bool isGrounded = false;
