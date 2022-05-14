@@ -21,11 +21,17 @@ public class Room : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
     public GameObject baril;
+    public GameObject[] props;
+    public GameObject portal;
+    public Vector3[] spawnPositions;
 
     public Color roomColor;
     public int maxBarilPerRoom = 4;
     public int minBarilPerRoom = 1;
     public RoomType roomType;
+
+    private Vector2 roomSize = new Vector2(50.0f, 50.0f);
+    private float wallThickness = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,30 +49,64 @@ public class Room : MonoBehaviour
         roomType = type;
     }
 
+
     public void InitializeRoom()
     {
+
         if (roomType == RoomType.Normal)
         {
             // Normal room
             CreateBarils();
-
-        } else if (roomType == RoomType.Start)
+            CreateProps();
+        }
+        else if (roomType == RoomType.Start)
         {
             // Starting room
-
+            CreateProps();
         }
         else
         {
             // Ending room
-
+            CreatePortal();
         }
 
     }
 
+    public void CreateProps()
+    {
+        foreach (Vector3 pos in spawnPositions)
+        {
+            int index = Random.Range(-1, props.Length);
+            if (index < 0)
+                continue;
+
+            CreatePropAtPosition(props[index], pos);
+        }
+    }
+
+    public void CreatePortal()
+    {
+        CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+    }
+
+    /**
+     * Creates a prop at a position where the origin is at the center of the room
+     * The prop will spawn with its feet at the floor
+     */
+    public GameObject CreatePropAtPosition(GameObject prop, Vector3 pos)
+    {
+        var position = pos + transform.position;
+        GameObject obj = Instantiate(prop, position, Quaternion.identity, transform);
+        var objTransform = obj.GetComponent<Transform>();
+        var size = obj.GetComponent<Collider>().bounds.size;
+        objTransform.position = objTransform.position +
+            new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+        return obj;
+    }
+
     public void CreateBarils()
     {
-        Vector2 roomSize = new Vector2(50.0f, 50.0f);
-        float wallThickness = 1.0f;
+
 
         int nbObject = Random.Range(minBarilPerRoom, maxBarilPerRoom);
         int counter = 0;
