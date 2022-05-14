@@ -21,9 +21,10 @@ public class Room : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
     public GameObject baril;
-    public Vector3[] spawnPositions;
     public GameObject[] props;
-        
+    public GameObject portal;
+    public Vector3[] spawnPositions;
+
     public Color roomColor;
     public int maxBarilPerRoom = 4;
     public int minBarilPerRoom = 1;
@@ -48,6 +49,7 @@ public class Room : MonoBehaviour
         roomType = type;
     }
 
+
     public void InitializeRoom()
     {
 
@@ -55,19 +57,18 @@ public class Room : MonoBehaviour
         {
             // Normal room
             CreateBarils();
-
-        } 
+            CreateProps();
+        }
         else if (roomType == RoomType.Start)
         {
             // Starting room
-
+            CreateProps();
         }
         else
         {
             // Ending room
-
+            CreatePortal();
         }
-        CreateProps();
 
     }
 
@@ -75,17 +76,32 @@ public class Room : MonoBehaviour
     {
         foreach (Vector3 pos in spawnPositions)
         {
-            int index = Random.Range(-3, props.Length);
+            int index = Random.Range(-1, props.Length);
             if (index < 0)
                 continue;
 
-            var position = pos + transform.position;
-            GameObject obj = Instantiate(props[index], position, Quaternion.identity, transform);
-            var objTransform = obj.GetComponent<Transform>();
-            var size = obj.GetComponent<Collider>().bounds.size;
-            objTransform.position = objTransform.position + 
-                new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+            CreatePropAtPosition(props[index], pos);
         }
+    }
+
+    public void CreatePortal()
+    {
+        CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+    }
+
+    /**
+     * Creates a prop at a position where the origin is at the center of the room
+     * The prop will spawn with its feet at the floor
+     */
+    public GameObject CreatePropAtPosition(GameObject prop, Vector3 pos)
+    {
+        var position = pos + transform.position;
+        GameObject obj = Instantiate(prop, position, Quaternion.identity, transform);
+        var objTransform = obj.GetComponent<Transform>();
+        var size = obj.GetComponent<Collider>().bounds.size;
+        objTransform.position = objTransform.position +
+            new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+        return obj;
     }
 
     public void CreateBarils()

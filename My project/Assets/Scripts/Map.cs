@@ -21,11 +21,12 @@ public class Map : MonoBehaviour
         new Vector3(-1, 0, 0)
     };
 
-    public int maxRooms = 4;
 
     public GameObject room;
-    public Vector2 roomSize;
     public GameObject player;
+
+    public int maxRooms = 4;
+    public Vector2 roomSize;
 
     private List<Room> rooms = new List<Room>();
 
