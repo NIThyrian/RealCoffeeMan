@@ -32,10 +32,8 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateMap();
-
         Instantiate(player, transform.position, Quaternion.identity, transform);
-        
+        GenerateMap();
         applyVibeToRooms();
     }
 
@@ -47,14 +45,18 @@ public class Map : MonoBehaviour
 
     public void applyVibeToRooms()
     {
+
     }
 
     public void GenerateMap()
     {
+        Debug.Assert(maxRooms > 2);
+
         List<Direction> map = new List<Direction>(GenerateDirections());
 
         Vector3 position = transform.position;
         Room spawnRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+        spawnRoom.SetType(Room.RoomType.Start);
         rooms.Add(spawnRoom);
         spawnRoom.UpdateRooms(new bool[] { true, false, false, false }); // Forward
         Vector3 dirVec = directions[(int)map[0]];
@@ -70,7 +72,9 @@ public class Map : MonoBehaviour
             dirVec.Scale(new Vector3(roomSize.x, 1, roomSize.y));
 
             Room newRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+            newRoom.SetType(Room.RoomType.Normal);
             rooms.Add(newRoom);
+
             Direction[] openedDirection =
             {
                 direction, GetOppositeDirection(previousDirection)
@@ -83,7 +87,9 @@ public class Map : MonoBehaviour
         }
 
         Room endRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+        endRoom.SetType(Room.RoomType.End);
         rooms.Add(endRoom);
+
         endRoom.UpdateRooms(GetActiveWallsFromDirection(new Direction[] { GetOppositeDirection(map[map.Count - 2]) })); // Forward
     }
 
