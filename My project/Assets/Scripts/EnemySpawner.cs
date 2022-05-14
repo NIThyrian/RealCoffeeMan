@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject rangeSwarmerPrefab;
 
-    private float meleeSwarmerInterval = 2f;
+    private float meleeSwarmerInterval = 5f;
     private float rangeSwarmerInterval = 10f;
 
     // Start is called before the first frame update
