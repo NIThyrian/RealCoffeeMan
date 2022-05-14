@@ -18,9 +18,9 @@ public class PlayerScript : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 moveDir = transform.right * x + transform.forward * z;
         controller.Move(moveDir * speed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded) velocity.y += Mathf.Sqrt(5f * -3f * gravity);
-
+       
+        if(Input.GetButtonDown("Jump") && isGrounded) velocity.y += Mathf.Sqrt(5f * -3f *gravity);
+        
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
