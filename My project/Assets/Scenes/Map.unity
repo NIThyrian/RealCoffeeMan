@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fa13e1f33ae864f836a70b96388bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRooms: 3
+  maxRooms: 5
   room: {fileID: 5129759986117127184, guid: e23e6c2a9dea59244b5f26a890a16321, type: 3}
   roomSize: {x: 50, y: 50}
   player: {fileID: 8894165618344184360, guid: 3c965bd63c2722346b97a34e94f5ea1d, type: 3}

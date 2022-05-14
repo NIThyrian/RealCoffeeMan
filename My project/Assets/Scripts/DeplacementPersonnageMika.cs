@@ -59,7 +59,7 @@ public class DeplacementPersonnageMika : MonoBehaviour
     {
         if (auSol)
         {
-            GetComponent<Rigidbody>().AddRelativeForce(0f, forceDuSaut, 0f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddRelativeForce(0f, forceDuSaut, 0f, ForceMode.VelocityChange);
             rigidbodyPerso.drag = 5;
             rigidbodyPerso.angularDrag = 5;
         }
