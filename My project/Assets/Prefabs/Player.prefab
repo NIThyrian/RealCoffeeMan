@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 1023774033364404834}
   - component: {fileID: 4774632242126685769}
   - component: {fileID: 3601586366127808239}
+<<<<<<< HEAD
   - component: {fileID: 3270809811982590228}
   - component: {fileID: 5086441053999048971}
+=======
+>>>>>>> edbf5b27faff4509d213f886c8da97593eec530b
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33,7 +36,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1023774034711241960}
-  - {fileID: 8139542888246032165}
   - {fileID: 6061141552014273570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,7 +56,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3601586366127808239
 MonoBehaviour:
@@ -69,10 +71,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 4774632242126685769}
-  groundCheck: {fileID: 8139542888246032165}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+<<<<<<< HEAD
   jumpForce: 300
 --- !u!54 &3270809811982590228
 Rigidbody:
@@ -104,6 +106,8 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> edbf5b27faff4509d213f886c8da97593eec530b
 --- !u!1 &1023774034711241965
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1023774033364404834}
+<<<<<<< HEAD
 --- !u!1 &3918711848474024457
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +238,8 @@ Transform:
   m_Father: {fileID: 1023774033364404834}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> edbf5b27faff4509d213f886c8da97593eec530b
 --- !u!1 &6556094160811036332
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1023774033364404834}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5778961321941616880
 MeshFilter:

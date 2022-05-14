@@ -3,51 +3,25 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private float jumpForce = 300f;
-    private bool _shouldJump;
-    private float speed = 300.0f;
+    private float speed = 12f;
 
-    // private Vector3 velocity;
-    
+    private Vector3 velocity;
     private bool isGrounded = false;
+    private float gravity = -9.81f;
 
-    private Rigidbody rb;
-
-    private void Start()
+    void Update()
     {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        if (_shouldJump == false)
-            _shouldJump = Input.GetButtonDown("Jump");
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.4f, groundMask);
-        
-
-    }
-
-
-    void FixedUpdate() {
-
-
-        if (_shouldJump)
-        {
-            Debug.Log("Adding force");
-            // controller.Move(jumpForce * Vector3.up);
-            rb.AddForce(jumpForce * Vector3.up);
-            _shouldJump = false;
-        }
-
+        isGrounded = controller.isGrounded;
+        if (isGrounded && velocity.y < 0) velocity.y = 0;
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         Vector3 moveDir = transform.right * x + transform.forward * z;
-        // controller.Move(moveDir * speed * Time.deltaTime);
+        controller.Move(moveDir * speed * Time.deltaTime);
 
-        rb.AddForce(moveDir);
+        if (Input.GetButtonDown("Jump") && isGrounded) velocity.y += Mathf.Sqrt(5f * -3f gravity);
+
+        velocity.y += 2 gravity* Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 }
