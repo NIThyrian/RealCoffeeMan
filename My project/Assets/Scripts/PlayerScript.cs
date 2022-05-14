@@ -5,28 +5,49 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
-    private float speed = 12f;
+    [SerializeField] private float jumpForce = 300f;
+    private bool _shouldJump;
+    private float speed = 300.0f;
 
-    private Vector3 velocity;
+    // private Vector3 velocity;
     
     private bool isGrounded = false;
 
-    void Update() {
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (_shouldJump == false)
+            _shouldJump = Input.GetButtonDown("Jump");
+
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.4f, groundMask);
-        if(isGrounded) velocity.y = 0f;
+        
+
+    }
+
+
+    void FixedUpdate() {
+
+
+        if (_shouldJump)
+        {
+            Debug.Log("Adding force");
+            // controller.Move(jumpForce * Vector3.up);
+            rb.AddForce(jumpForce * Vector3.up);
+            _shouldJump = false;
+        }
+
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         Vector3 moveDir = transform.right * x + transform.forward * z;
-        controller.Move(moveDir * speed * Time.deltaTime);
+        // controller.Move(moveDir * speed * Time.deltaTime);
 
-        velocity.y += -9.81f * Time.deltaTime;
-
-        if(Input.GetButtonDown("Jump") && isGrounded) {
-            transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z+1f);
-            velocity.y = Mathf.Sqrt(10f * 2f * 9.81f);
-        }
-        
-        controller.Move(velocity * Time.deltaTime);
+        rb.AddForce(moveDir);
     }
 }

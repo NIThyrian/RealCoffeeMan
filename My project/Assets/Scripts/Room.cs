@@ -21,11 +21,16 @@ public class Room : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
     public GameObject baril;
-
+    public Vector3[] spawnPositions;
+    public GameObject[] props;
+        
     public Color roomColor;
     public int maxBarilPerRoom = 4;
     public int minBarilPerRoom = 1;
     public RoomType roomType;
+
+    private Vector2 roomSize = new Vector2(50.0f, 50.0f);
+    private float wallThickness = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +50,14 @@ public class Room : MonoBehaviour
 
     public void InitializeRoom()
     {
+
         if (roomType == RoomType.Normal)
         {
             // Normal room
             CreateBarils();
 
-        } else if (roomType == RoomType.Start)
+        } 
+        else if (roomType == RoomType.Start)
         {
             // Starting room
 
@@ -60,13 +67,30 @@ public class Room : MonoBehaviour
             // Ending room
 
         }
+        CreateProps();
 
+    }
+
+    public void CreateProps()
+    {
+        foreach (Vector3 pos in spawnPositions)
+        {
+            int index = Random.Range(-3, props.Length);
+            if (index < 0)
+                continue;
+
+            var position = pos + transform.position;
+            GameObject obj = Instantiate(props[index], position, Quaternion.identity, transform);
+            var objTransform = obj.GetComponent<Transform>();
+            var size = obj.GetComponent<Collider>().bounds.size;
+            objTransform.position = objTransform.position + 
+                new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+        }
     }
 
     public void CreateBarils()
     {
-        Vector2 roomSize = new Vector2(50.0f, 50.0f);
-        float wallThickness = 1.0f;
+
 
         int nbObject = Random.Range(minBarilPerRoom, maxBarilPerRoom);
         int counter = 0;
