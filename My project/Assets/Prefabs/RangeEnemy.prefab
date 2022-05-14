@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5730942401948382208}
   - component: {fileID: 5730942401948382209}
   - component: {fileID: 5730942401948382210}
+  - component: {fileID: 5730942401948382211}
   - component: {fileID: -8469361248434112613}
-  - component: {fileID: 5273566516757757399}
   m_Layer: 0
-  m_Name: MeleeEnemy
+  m_Name: RangeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,6 +138,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5730942401948382211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730942401948382212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2833f70b0b6624141b3b6b76e7df68e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &-8469361248434112613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -152,18 +164,6 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 0}
---- !u!114 &5273566516757757399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5730942401948382212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f06796daebbf745b2d967c28048b1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,10 +175,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 4362962105363994262, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
     - target: {fileID: 5075479059614945226, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05

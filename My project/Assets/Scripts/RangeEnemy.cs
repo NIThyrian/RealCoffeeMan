@@ -3,8 +3,9 @@ using Pathfinding;
 
 public class RangeEnemy : MonoBehaviour
 {
-    public AIPath aiPath;
+    private AIPath aiPath;
     //private Game game;
+    private AIDestinationSetter aiDest;
     private float range;
     private float shootInterval;
 
@@ -12,6 +13,8 @@ public class RangeEnemy : MonoBehaviour
     void Start()
     {
         aiPath = GetComponent<AIPath>();
+        aiDest = GetComponent<AIDestinationSetter>();
+        aiDest.target = GameObject.FindGameObjectWithTag("Player").transform;
         //game = GetComponentInParent<Game>();
         float difficultyFactor = 1.25f;
         range = 11f * difficultyFactor;
