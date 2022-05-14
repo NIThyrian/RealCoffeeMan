@@ -68,7 +68,7 @@ public class Room : MonoBehaviour
         Vector2 roomSize = new Vector2(50.0f, 50.0f);
         float wallThickness = 1.0f;
 
-        int nbObject = Random.Range(minBarilPerRoom, maxBarilPerRoom);
+        int nbObject = 1;// Random.Range(minBarilPerRoom, maxBarilPerRoom);
         int counter = 0;
         while (counter++ < nbObject)
         {
@@ -78,15 +78,16 @@ public class Room : MonoBehaviour
 
             Vector3 position = transform.position + new Vector3(dx, 0, dz);
 
-            int numberGenerated = Random.Range(1, 2);
+            int numberGenerated = Random.Range(2, 2);
             int counterGenerated = 1;
             while (counterGenerated <= numberGenerated)
             {
-                GameObject obj = Instantiate(baril, position, Quaternion.Euler(new Vector3(90, 90, 0)), transform);
+                GameObject obj = Instantiate(baril, position, Quaternion.Euler(new Vector3(0, 0, 0)), transform);
                 var objTransform = obj.GetComponent<Transform>();
                 var size = obj.GetComponent<Collider>().bounds.size;
-                objTransform.position = objTransform.position + new Vector3(0, size.z * 0.5f + wallThickness / 2.0f, 0); // Translation to floor (z direction because the prefab is rotated)
-                objTransform.position = objTransform.position + new Vector3(0, (counterGenerated - 1) * size.z - (counterGenerated - 1) * wallThickness, 0); // Baril on top of another
+                Debug.Log(size);
+                objTransform.position = objTransform.position + new Vector3(0, size.y * 0.5f + wallThickness / 2.0f, 0); // Translation to floor (z direction because the prefab is rotated)
+                objTransform.position = objTransform.position + new Vector3(0, (counterGenerated - 1) * size.y, 0); // Baril on top of another
                 counterGenerated++;
             }
         }

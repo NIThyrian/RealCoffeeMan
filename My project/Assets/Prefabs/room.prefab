@@ -542,7 +542,7 @@ MonoBehaviour:
   - {fileID: 5129759986425671467}
   - {fileID: 5129759984872272314}
   doors: []
-  baril: {fileID: 1527297205147476436, guid: e27656d60759bc546a44137ca8060659, type: 3}
+  baril: {fileID: 2171093495516224349, guid: 06d14248d1756b0459d664011531063b, type: 3}
   roomColor: {r: 0, g: 0, b: 0, a: 0}
   maxBarilPerRoom: 6
   minBarilPerRoom: 2
