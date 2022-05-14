@@ -34,7 +34,7 @@ public class Map : MonoBehaviour
     {
         GenerateMap();
 
-        Instantiate(player, transform.position, Quaternion.identity, transform);
+        Instantiate(player, player.transform.position, Quaternion.identity, transform);
         
         applyVibeToRooms();
     }
