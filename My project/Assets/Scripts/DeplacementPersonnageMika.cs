@@ -5,13 +5,15 @@ using UnityEngine;
 public class DeplacementPersonnageMika : MonoBehaviour
 {
     public Rigidbody rigidbodyPerso;
-    public GameObject camera;
+    public GameObject playerCamera;
     float vitesseDeplacement; 
     public float hauteurSaut;
     public float ajoutGravite;
     private float forceDuSaut;
     private bool auSol;
     public bool saut;
+
+    public int health = 10;
     
     void Start()
     {
@@ -22,7 +24,7 @@ public class DeplacementPersonnageMika : MonoBehaviour
     {
         float hDeplacement = Input.GetAxisRaw("Horizontal");
         float vDeplacement = Input.GetAxisRaw("Vertical");
-        Vector3 directionDep = camera.transform.forward * vDeplacement + camera.transform.right * hDeplacement;
+        Vector3 directionDep = playerCamera.transform.forward * vDeplacement + playerCamera.transform.right * hDeplacement;
         directionDep.y = 0;
         if(directionDep != Vector3.zero)
         {
@@ -59,7 +61,7 @@ public class DeplacementPersonnageMika : MonoBehaviour
     {
         if (auSol)
         {
-            GetComponent<Rigidbody>().AddRelativeForce(0f, forceDuSaut, 0f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddRelativeForce(0f, forceDuSaut, 0f, ForceMode.VelocityChange);
             rigidbodyPerso.drag = 5;
             rigidbodyPerso.angularDrag = 5;
         }

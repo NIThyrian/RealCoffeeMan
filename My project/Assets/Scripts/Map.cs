@@ -21,15 +21,21 @@ public class Map : MonoBehaviour
         new Vector3(-1, 0, 0)
     };
 
-    public int maxRooms = 0;
+    public int maxRooms = 4;
 
     public GameObject room;
     public Vector2 roomSize;
+    public GameObject player;
+
+    private List<Room> rooms = new List<Room>();
 
     // Start is called before the first frame update
     void Start()
     {
         GenerateMap();
+        Instantiate(player, transform.position + new Vector3(0.0f, 10.0f, 0.0f), Quaternion.identity, transform);
+
+        applyVibeToRooms();
     }
 
     // Update is called once per frame
@@ -38,32 +44,38 @@ public class Map : MonoBehaviour
         
     }
 
+    public void applyVibeToRooms()
+    {
+
+    }
+
     public void GenerateMap()
     {
+        Debug.Assert(maxRooms > 2);
+
         List<Direction> map = new List<Direction>(GenerateDirections());
 
         Vector3 position = transform.position;
-        Debug.Log(position);
         Room spawnRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+        spawnRoom.SetType(Room.RoomType.Start);
+        rooms.Add(spawnRoom);
         spawnRoom.UpdateRooms(new bool[] { true, false, false, false }); // Forward
         Vector3 dirVec = directions[(int)map[0]];
         dirVec.Scale(roomSize);
-        Debug.Log(Direction.Forward);
 
         position += dirVec;
 
-        for (int i = 1; i < map.Count; i++)
+        for (int i = 1; i < map.Count - 1; i++)
         {
             Direction direction = map[i];
             Direction previousDirection = map[i - 1];
             dirVec = directions[(int)direction];
             dirVec.Scale(new Vector3(roomSize.x, 1, roomSize.y));
-            Debug.Log(direction);
-            Debug.Log(position);
-
-
 
             Room newRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+            newRoom.SetType(Room.RoomType.Normal);
+            rooms.Add(newRoom);
+
             Direction[] openedDirection =
             {
                 direction, GetOppositeDirection(previousDirection)
@@ -74,7 +86,12 @@ public class Map : MonoBehaviour
             bool[] activeDirections = GetActiveWallsFromDirection(openedDirection);
             newRoom.UpdateRooms(activeDirections);
         }
-        
+
+        Room endRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
+        endRoom.SetType(Room.RoomType.End);
+        rooms.Add(endRoom);
+
+        endRoom.UpdateRooms(GetActiveWallsFromDirection(new Direction[] { GetOppositeDirection(map[map.Count - 2]) })); // Forward
     }
 
     public Direction[] GenerateDirections()
@@ -82,7 +99,7 @@ public class Map : MonoBehaviour
         Direction[] map = new Direction[maxRooms];
 
         map[0] = Direction.Forward;
-        for (int i = 1; i < map.Length; i++)
+        for (int i = 1; i < map.Length - 1; i++)
         {
             Direction direction = (Direction)Random.Range(0, (int)Direction.Max);
 
@@ -91,6 +108,7 @@ public class Map : MonoBehaviour
 
             map[i] = direction;
         }
+        map[map.Length - 1] = GetOppositeDirection(map[map.Length - 2]);
 
         return map;
 
@@ -124,4 +142,5 @@ public class Map : MonoBehaviour
 
         return activeWalls;
     }
+
 }
