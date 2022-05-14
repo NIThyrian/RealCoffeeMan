@@ -5,6 +5,7 @@ public class Game : MonoBehaviour
 {
     public Color currentColor;
     public int level;
+    public float difficultyFactor;
     public GameObject map;
     private GameObject mapReference; 
 
@@ -23,6 +24,7 @@ public class Game : MonoBehaviour
 
     void Start() {
         level = 1;
+        difficultyFactor = 1;
         currentColor = Random.ColorHSV();
         mapReference = Instantiate(map, new Vector3(0.0f,0.0f,0.0f), Quaternion.identity, transform);
     }
@@ -35,6 +37,7 @@ public class Game : MonoBehaviour
         Destroy(mapReference);
         currentColor = Random.ColorHSV();
         level++;
+        difficultyFactor += 0.25f;
         mapReference = Instantiate(map, map.transform.position, Quaternion.identity, transform);
     }
 }

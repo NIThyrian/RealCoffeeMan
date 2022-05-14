@@ -21,11 +21,12 @@ public class Map : MonoBehaviour
         new Vector3(-1, 0, 0)
     };
 
-    public int maxRooms = 4;
 
     public GameObject room;
-    public Vector2 roomSize;
     public GameObject player;
+
+    public int maxRooms = 4;
+    public Vector2 roomSize;
 
     private List<Room> rooms = new List<Room>();
 
@@ -33,7 +34,7 @@ public class Map : MonoBehaviour
     void Start()
     {
         GenerateMap();
-        Instantiate(player, transform.position + new Vector3(0.0f, 10.0f, 0.0f), Quaternion.identity, transform);
+        Instantiate(player, transform.position + new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity, transform);
 
         applyVibeToRooms();
     }
