@@ -1,26 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using TMPro;
 
 public class UIShop : MonoBehaviour
 {
-    private Transform container;
-    private Transform shopItemTemplate;
-    [SerializeField] private DeplacementPersonnageMika player;
+    [SerializeField] private PlayerScript player;
 
-    private void Awake() {
-        container = transform.Find("Container");
-        shopItemTemplate = container.Find("ShopItemTemplate");
-    }
+    private Dictionary<string, int> priceDict;
 
     private void Start() {
-        Sprite steakSprite = Resources.Load<Sprite>("Steak");
-        Sprite gunSprite = Resources.Load<Sprite>("Gun");
-        Sprite bootsSprite = Resources.Load<Sprite>("Boots");
-
-        CreateItemButton(steakSprite, "Steak", 10, 0);
-        CreateItemButton(gunSprite, "Gun", 100, 1);
-        CreateItemButton(bootsSprite, "Boots", 100, 2);
+        priceDict = new Dictionary<string, int> {
+            {"SteakPrice", 0},
+            {"GunPrice", 0},
+            {"BootsPrice", 0},
+            {"CoffeePrice", 0},
+            {"CaPrice", 0},
+            {"GoldPrice", 0},
+            {"NotACubePrice", 0},
+            {"PoopPrice", 0},
+            {"RocketPricePrice", 0}
+        };
+        RandomizeCurrencies();
+        SetBtnActions();
     }
 
     void Update() {
@@ -28,40 +30,80 @@ public class UIShop : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void CreateItemButton(Sprite itemSprite, string itemName, int itemPrice, int positionIndex) {
-        Transform shopItemTransform = Instantiate(shopItemTemplate, container);
+    private void SetBtnActions() {
+        Transform steakItem = transform.Find("SteakItem");
+        steakItem.GetComponent<Button>().onClick.AddListener(delegate { ClickedSteak(); } );
+        steakItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["SteakPrice"]).ToString();
 
-        float shopItemHeight = 60f;
-        shopItemTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -shopItemHeight * positionIndex);
+        Transform gunItem = transform.Find("GunItem");
+        gunItem.GetComponent<Button>().onClick.AddListener(delegate { ClickedGun(); } );
+        gunItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["GunPrice"]).ToString();
 
-        shopItemTransform.Find("ItemNameText").GetComponent<TextMeshProUGUI>().SetText(itemName);
-        shopItemTransform.Find("ItemPriceText").GetComponent<TextMeshProUGUI>().SetText(itemPrice.ToString());
-        shopItemTransform.Find("ItemImage").GetComponent<Image>().sprite = itemSprite;
-        shopItemTransform.gameObject.SetActive(true);
-        shopItemTransform.gameObject.GetComponent<Button>().onClick.AddListener(delegate { ClickedShopItem(); });
+        Transform bootsItem = transform.Find("BootsItem");
+        bootsItem.GetComponent<Button>().onClick.AddListener(delegate { ClickedBoots(); } );
+        bootsItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["BootsPrice"]).ToString();
+
+        Transform coffeeItem = transform.Find("CoffeeItem");
+        coffeeItem.GetComponent<Button>().onClick.AddListener(delegate { ClickedCoffee(); } );
+        coffeeItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["CoffeePrice"]).ToString();
+
+        Transform caCoin = transform.Find("CaCoin");
+        caCoin.GetComponent<Button>().onClick.AddListener(delegate { SellCa(); } );
+        caCoin.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["CaPrice"]).ToString();
+
+        Transform goldCoin = transform.Find("GoldCoin");
+        goldCoin.GetComponent<Button>().onClick.AddListener(delegate { SellGold(); } );
+        goldCoin.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["GoldPrice"]).ToString();
+
+        Transform notACubeCoin = transform.Find("NotACubeCoin");
+        notACubeCoin.GetComponent<Button>().onClick.AddListener(delegate { SellNotACube(); } );
+        notACubeCoin.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["NotACubePrice"]).ToString();
+
+        Transform poopCoin = transform.Find("PoopCoin");
+        poopCoin.GetComponent<Button>().onClick.AddListener(delegate { SellPoop(); } );
+        poopCoin.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["PoopPrice"]).ToString();
+
+        Transform rocketCoin = transform.Find("RocketCoin");
+        rocketCoin.GetComponent<Button>().onClick.AddListener(delegate { SellRocket(); } );
+        rocketCoin.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["RocketPrice"]).ToString();
     }
 
-    private void ClickedShopItem() {
-        player.health += 10;
-        Debug.Log(player.health);
+    private void RandomizeCurrencies() {
+        priceDict["CaPrice"] = Random.Range(0, 100);
+        priceDict["GoldPrice"] = Random.Range(0, 100);
+        priceDict["NotACubePrice"] = Random.Range(0, 100);
+        priceDict["PoopPrice"] = Random.Range(0, 100);
+        priceDict["RocketPrice"] = Random.Range(0, 100);
     }
 
-    private string GetItemDescription(string itemName) {
-        string itemDescription = "";
-        switch(itemName) {
-            case "Steak":
-                itemDescription = "Steak";
-                break;
-            case "Gun":
-                itemDescription = "Gun";
-                break;
-            case "Boots":
-                itemDescription = "Boots";
-                break;
-            default:
-                Debug.Log("Not able to find item in UIShop/GetItemDescription");
-                break;
-        }
-        return itemDescription;
+    private void UpdatePrices() { }
+
+    private void ClickedSteak() {
+        Debug.Log("AddHealth");
+    }
+    private void ClickedGun() {
+        Debug.Log("AddDamage");
+    }
+    private void ClickedBoots() {
+        Debug.Log("AddSpeed");
+    }
+    private void ClickedCoffee() {
+        Debug.Log("FinishGame");
+    }
+
+    private void SellCa() {
+        Debug.Log("SellCa");
+    }
+    private void SellGold() {
+        Debug.Log("SellGold");
+    }
+    private void SellNotACube() {
+        Debug.Log("SellNotACube");
+    }
+    private void SellPoop() {
+        Debug.Log("SellPoop");
+    }
+    private void SellRocket() {
+        Debug.Log("SellRocket");
     }
 }

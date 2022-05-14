@@ -11,6 +11,12 @@ public class PlayerScript : MonoBehaviour
     
     private bool isGrounded = false;
 
+    public int CaCount = 0;
+    public int GoldCount = 0;
+    public int NotACubeCount = 0;
+    public int PoopCount = 0;
+    public int RocketCount = 0;
+
     void Update() {
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.4f, groundMask);
         if(isGrounded) velocity.y = 0f;
