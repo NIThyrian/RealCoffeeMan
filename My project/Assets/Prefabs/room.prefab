@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 5129759985312520383}
   - component: {fileID: 5129759985312520380}
   - component: {fileID: 5129759985312520381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Shadows.m_Type

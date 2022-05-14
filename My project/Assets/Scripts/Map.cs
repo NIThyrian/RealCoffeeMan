@@ -32,8 +32,9 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(player, transform.position, Quaternion.identity, transform);
         GenerateMap();
+        Instantiate(player, transform.position + new Vector3(0.0f, 10.0f, 0.0f), Quaternion.identity, transform);
+
         applyVibeToRooms();
     }
 
