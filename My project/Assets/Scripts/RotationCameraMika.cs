@@ -22,7 +22,7 @@ public class RotationCameraMika : MonoBehaviour
         transform.Rotate(-Input.GetAxis("Mouse Y") * vitesseCameraY, Input.GetAxis("Mouse X") * vitesseCameraX, 0);
 
         transform.localEulerAngles = new Vector3(Mathf.Clamp(transform.localEulerAngles.x, 2, 50), transform.localEulerAngles.y, 0);
-        camera3emePersonne.transform.localPosition = new Vector3(0, 0, distanceCamera);
+        // camera3emePersonne.transform.localPosition = new Vector3(0, 0, 0);
 
     }
 }
