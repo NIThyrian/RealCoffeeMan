@@ -6,6 +6,7 @@ using TMPro;
 public class UIShop : MonoBehaviour
 {
     [SerializeField] private Game game;
+    [SerializeField] private GameObject playerUI;
 
     private Dictionary<string, int> priceDict = new Dictionary<string, int> {
             {"SteakPrice", 10},
@@ -105,7 +106,7 @@ public class UIShop : MonoBehaviour
         Transform playerCurrency = transform.Find("PlayerCurrency");
         playerCurrency.GetChild(0).GetComponent<TextMeshProUGUI>().text = (game.playerDict["CashHeld"]).ToString();
 
-        if (game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"]) steakItem.GetComponent<Image>().color = Color.gray;
+        if (game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"] || game.currentHealth >= game.maxHealth) steakItem.GetComponent<Image>().color = Color.gray;
         else steakItem.GetComponent<Image>().color = Color.white;
         if (game.playerDict["CashHeld"] <= priceDict["GunCurrentPrice"]) gunItem.GetComponent<Image>().color = Color.gray;
         else gunItem.GetComponent<Image>().color = Color.white;
@@ -127,20 +128,23 @@ public class UIShop : MonoBehaviour
     }
 
     public void OpenShop() {
-        Game.isPaused = true;
-        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        gameObject.SetActive(true);
-    }
+        Time.timeScale = 0;
+        Game.isPaused = true;
 
+        gameObject.SetActive(true);
+        playerUI.SetActive(false);
+    }
     public void CloseShop() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        gameObject.SetActive(false);
         Time.timeScale = 1;
         Game.isPaused = false;
+        playerUI.transform.Find("CashHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["CashHeld"].ToString();
 
+        gameObject.SetActive(false);
+        playerUI.SetActive(true);
     }
 
     private void RandomizeCurrencies() {
@@ -152,12 +156,10 @@ public class UIShop : MonoBehaviour
     }
 
     private void ClickedSteak() {
-        if(game.playerDict["CashHeld"] >= priceDict["SteakCurrentPrice"]) {
+        if(game.playerDict["CashHeld"] >= priceDict["SteakCurrentPrice"] && game.currentHealth != game.maxHealth) {
             game.playerDict["CashHeld"] -= priceDict["SteakCurrentPrice"];
             game.playerDict["SteakPurchased"] += 1;
-            PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-            player.currentHealth += 30;
-            if (player.currentHealth > player.maxHealth) player.currentHealth = player.maxHealth;
+            game.TakeDamage(-10);
             UpdatePrices();
         }
     }

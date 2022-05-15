@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c99210e3946bd34fa6fd8d5c596d532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2322480073710670698, guid: 7936a145c648ed54e98b15d0cef580a4, type: 3}
 --- !u!1 &4118378176239572138
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +319,37 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &7946203411677394826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c9f4a8d74c4b884d8dd0f39935c9a01, type: 3}
+  m_PrefabInstance: {fileID: 4443378924835587907}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4188546572448243880}
+  m_Layer: 0
+  m_Name: 'shop (Missing Prefab with guid: 5c9f4a8d74c4b884d8dd0f39935c9a01)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4188546572448243880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c9f4a8d74c4b884d8dd0f39935c9a01, type: 3}
+  m_PrefabInstance: {fileID: 4443378924835587907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946203411677394826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6056817044340631896}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4443378924835587907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,8 +419,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c9f4a8d74c4b884d8dd0f39935c9a01, type: 3}
---- !u!4 &4188546572448243880 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c9f4a8d74c4b884d8dd0f39935c9a01, type: 3}
-  m_PrefabInstance: {fileID: 4443378924835587907}
-  m_PrefabAsset: {fileID: 0}
