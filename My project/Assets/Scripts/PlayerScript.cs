@@ -19,10 +19,10 @@ public class PlayerScript : MonoBehaviour
 
 
     private void Start() {
-        Game component = GetComponentInParent(typeof(Game)) as Game; 
-        speed += component.playerDict["BootsPurchased"] * speedUpgradeIncrement;
+        game = GetComponentInParent(typeof(Game)) as Game; 
+        speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         jumpHeight = speed / 2;
-        damage += component.playerDict["GunPurchased"] * damageUpgradeIncrement;
+        damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
         currentHealth = maxHealth;
         shops = GameObject.FindGameObjectsWithTag("Shop");
 
@@ -47,7 +47,6 @@ public class PlayerScript : MonoBehaviour
             
             if (Vector3.Distance(shop.transform.position, transform.position) < 5 && Input.GetKeyDown("e"))
             {
-                Debug.Log("e");
                 Game component = GetComponentInParent(typeof(Game)) as Game;
                 component.E();
 
@@ -76,9 +75,9 @@ public class PlayerScript : MonoBehaviour
                         break;
                 }
                 Destroy(hit.gameObject);
-            } 
-            
-            if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
+            }
+
+            if (hit.gameObject.CompareTag("Portal"))game.ChangeLevel();
 
             Rigidbody hitBody = hit.collider.attachedRigidbody;
             if(hitBody != null) {

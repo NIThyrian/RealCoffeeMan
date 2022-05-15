@@ -11,7 +11,7 @@ public class GunMika : MonoBehaviour
     private float vitesseBalles = 50f;
 
     void Update() {
-        if(Input.GetButtonDown("Fire1")) {
+        if(Input.GetButtonDown("Fire1") && !Game.isPaused) {
             Shoot();
         }
     }

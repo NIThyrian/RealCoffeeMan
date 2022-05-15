@@ -32,6 +32,8 @@ public class UIShop : MonoBehaviour
 
     public void Open()
     {
+        Game.isPaused = true;
+        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameObject.SetActive(true);
@@ -167,6 +169,9 @@ public class UIShop : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameObject.SetActive(false);
+        Time.timeScale = 1;
+        Game.isPaused = false;
+
     }
 
     private void RandomizeCurrencies() {

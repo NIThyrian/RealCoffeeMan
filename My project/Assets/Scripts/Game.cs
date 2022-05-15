@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public static bool isPaused = false;  
     public Color currentColor;
     public int level;
     public float difficultyFactor;
