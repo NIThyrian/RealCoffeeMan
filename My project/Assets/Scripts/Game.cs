@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
             {"SteakPurchased", 0},
             {"GunPurchased", 0},
             {"BootsPurchased", 0},
-            {"CoffeePurchased", 1},
+            {"CoffeePurchased", 0},
             {"CaHeld", 0},
             {"GoldHeld", 0},
             {"NotACubeHeld", 0},

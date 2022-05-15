@@ -170,7 +170,8 @@ MonoBehaviour:
   poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
   rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
   health: 100
-  damage: 1
+  damage: 2
+  startFollowDistance: 60
   state: 0
 --- !u!1001 &8791756244461386468
 PrefabInstance:
