@@ -30,15 +30,10 @@ public class Game : MonoBehaviour
         mapReference = Instantiate(map, new Vector3(0.0f,0.0f,0.0f), Quaternion.identity, transform);
         shop = GetComponentInChildren<UIShop>() as UIShop;
         shop.CloseShop();
-        
     }
 
-    public void E()
-    {
-        shop.Open();
-
-    }
-    void Update() {
+    public void E() {
+        shop.OpenShop();
     }
 
     public void ChangeLevel() {

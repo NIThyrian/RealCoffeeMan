@@ -16,16 +16,13 @@ public class PlayerScript : MonoBehaviour
     private GameObject[] shops;
     private Game game;
 
-
-
     private void Start() {
-        Game component = GetComponentInParent(typeof(Game)) as Game; 
-        speed += component.playerDict["BootsPurchased"] * speedUpgradeIncrement;
+        game = GetComponentInParent(typeof(Game)) as Game; 
+        speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         jumpHeight = speed / 2;
-        damage += component.playerDict["GunPurchased"] * damageUpgradeIncrement;
+        damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
         currentHealth = maxHealth;
         shops = GameObject.FindGameObjectsWithTag("Shop");
-
     }
 
     private void Update() {
@@ -42,15 +39,9 @@ public class PlayerScript : MonoBehaviour
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        foreach( GameObject shop in shops)
-        {
-            
-            if (Vector3.Distance(shop.transform.position, transform.position) < 5 && Input.GetKeyDown("e"))
-            {
-                Debug.Log("e");
-                Game component = GetComponentInParent(typeof(Game)) as Game;
-                component.E();
-
+        foreach( GameObject shop in shops) {
+            if (Vector3.Distance(shop.transform.position, transform.position) < 5 && Input.GetKeyDown("e")) {
+                game.E();
             }
         }
     }

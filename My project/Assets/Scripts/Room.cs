@@ -111,13 +111,8 @@ public class Room : MonoBehaviour
     public GameObject CreatePropAtPosition(GameObject prop, Vector3 pos)
     {
         var position = pos;
-        Debug.Log("POSITION : " + position);
-        Debug.Log("TRANSFORM : " + transform.position);
-        Debug.Log("LOCAL POS : " + transform.localPosition);
         GameObject obj = Instantiate(prop, transform.position + position, Quaternion.identity, transform);
         var objTransform = obj.GetComponent<Transform>();
-        Debug.Log("POS TRASN : " + objTransform.position);
-        Debug.Log("POS LOC TRASN : " + objTransform.localPosition);
         //Vector3 size = new Vector3();
         if (obj.GetComponent<Collider>() != null)
         {
