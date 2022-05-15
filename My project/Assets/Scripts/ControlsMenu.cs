@@ -15,4 +15,3 @@ public class ControlsMenu : Menu
         mainMenu.show(true);
     }
 }
-

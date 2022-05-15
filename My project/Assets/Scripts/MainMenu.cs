@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,6 +7,10 @@ public class MainMenu : Menu
     public CreditMenu creditMenu;
     public OptionMenu optionMenu;
     public ControlsMenu controlsMenu;
+
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start() {
         setBtnActions();
