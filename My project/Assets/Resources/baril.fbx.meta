@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: bookshelf
     second: {fileID: 2100000, guid: a6a161264d24ee548b30ee8a080b27d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pot
+    second: {fileID: 2100000, guid: 015151b4db11c334eaacff0eb326868e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy){
         enemyCounter++;
         yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(transform.position.x - 1f, transform.position.x + 1f), transform.position.y + 1, Random.Range(transform.position.z - 1f, transform.position.z + 1f)), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
         if (enemyCounter >= maxEnemy)
         {
             StopAllCoroutines();

@@ -3,7 +3,12 @@ guid: bee6522649e32f64f908003a9cdd1736
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparency flask
+    second: {fileID: 2100000, guid: 18337266f89ff704fabcaa6882a26586, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

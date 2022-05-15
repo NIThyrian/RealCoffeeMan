@@ -1,21 +1,14 @@
 using UnityEngine;
 using Pathfinding;
 
-public class RangeEnemy : MonoBehaviour
+public class RangeEnemy : Enemy
 {
-    private AIPath aiPath;
-    //private Game game;
-    private AIDestinationSetter aiDest;
-    private float range;
-    private float shootInterval;
 
     // Start is called before the first frame update
     void Start()
     {
-        aiPath = GetComponent<AIPath>();
-        aiDest = GetComponent<AIDestinationSetter>();
-        aiDest.target = GameObject.FindGameObjectWithTag("Player").transform;
-        //game = GetComponentInParent<Game>();
+        SetupPathfinding();
+        /*
         float difficultyFactor = 1.25f;
         range = 11f * difficultyFactor;
         shootInterval = 2f / difficultyFactor;
@@ -23,7 +16,7 @@ public class RangeEnemy : MonoBehaviour
         aiPath.endReachedDistance = range - 1f;
         aiPath.maxSpeed = 2f * difficultyFactor;
         aiPath.slowdownDistance = 2 * aiPath.endReachedDistance;
-        
+        */
     }
 
     // Update is called once per frame

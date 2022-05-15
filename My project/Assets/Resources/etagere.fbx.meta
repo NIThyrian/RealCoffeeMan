@@ -3,7 +3,32 @@ guid: beadd05a92666cd46b2bdd718da5015b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: feuille
+    second: {fileID: 2100000, guid: d3ad3d282dea53d429bd4b680785a896, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frigo
+    second: {fileID: 2100000, guid: d060831aa528332448a5cc74c9f2ee50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pot
+    second: {fileID: 2100000, guid: 0d00c950617857445a25f25291cb6b4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: terre
+    second: {fileID: 2100000, guid: 7018d0a098231624d8cb6c1241e0049d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: transparency flask
+    second: {fileID: 2100000, guid: cb743171712a4734190c1b1ff3176371, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Room : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Room : MonoBehaviour
 
     private Vector2 roomSize = new Vector2(50.0f, 50.0f);
     private float wallThickness = 1.0f;
+    private List<GameObject> obstacles = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,11 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public List<GameObject> GetObstacles()
+    {
+        return obstacles;
     }
 
     public void SetType(RoomType type)
@@ -97,10 +104,18 @@ public class Room : MonoBehaviour
     {
         var position = pos + transform.position;
         GameObject obj = Instantiate(prop, position, Quaternion.identity, transform);
+        
+        
         var objTransform = obj.GetComponent<Transform>();
-        var size = obj.GetComponent<Collider>().bounds.size;
+        Vector3 size = new Vector3();
+        if (obj.GetComponent<Collider>() != null)
+        {
+            size = obj.GetComponent<Collider>().bounds.size;
+        }
+
         objTransform.position = objTransform.position +
             new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+        obstacles.Add(obj);
         return obj;
     }
 
@@ -122,11 +137,9 @@ public class Room : MonoBehaviour
             int counterGenerated = 1;
             while (counterGenerated <= numberGenerated)
             {
-                GameObject obj = Instantiate(baril, position, Quaternion.Euler(new Vector3(0, 0, 0)), transform);
+                var obj = CreatePropAtPosition(baril, new Vector3(dx, 0, dz));
                 var objTransform = obj.GetComponent<Transform>();
                 var size = obj.GetComponent<Collider>().bounds.size;
-                Debug.Log(size);
-                objTransform.position = objTransform.position + new Vector3(0, size.y * 0.5f + wallThickness / 2.0f, 0); // Translation to floor (z direction because the prefab is rotated)
                 objTransform.position = objTransform.position + new Vector3(0, (counterGenerated - 1) * size.y, 0); // Baril on top of another
                 counterGenerated++;
             }

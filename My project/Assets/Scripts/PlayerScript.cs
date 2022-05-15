@@ -36,7 +36,7 @@ public class PlayerScript : MonoBehaviour
         if (hit.gameObject.GetComponent<Rigidbody>() != null)
         {
             Debug.Log("COLLISION");
-            hit.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * 100.0f);
+            hit.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * 300.0f);
         }
     }
 }
