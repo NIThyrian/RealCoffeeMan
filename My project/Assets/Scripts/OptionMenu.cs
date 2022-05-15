@@ -13,7 +13,7 @@ public class OptionMenu : Menu
     static public bool soundEnabled;
     static public float xSensivity;
     static public float ySensivity;
-    // Start is called before the first frame update
+
     void Start()
     {
         soundEnabled = true;
