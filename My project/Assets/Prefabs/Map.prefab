@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7472337554998228775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.827873, y: -10.885217, z: -1.8076515}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -134,5 +134,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room: {fileID: 5129759986117127184, guid: e23e6c2a9dea59244b5f26a890a16321, type: 3}
   player: {fileID: 2302836852206782446, guid: 7936a145c648ed54e98b15d0cef580a4, type: 3}
-  maxRooms: 5
+  maxRooms: 7
   roomSize: {x: 50, y: 50}

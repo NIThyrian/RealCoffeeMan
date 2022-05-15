@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     public GameObject[] props;
     public GameObject portal;
     public Vector3[] spawnPositions;
+    public float chanceRoomHavingDoor = 0.5f;
 
     public Color roomColor;
     public int maxBarilPerRoom = 4;
@@ -63,13 +64,13 @@ public class Room : MonoBehaviour
         if (roomType == RoomType.Normal)
         {
             // Normal room
-            CreateBarils();
+            // CreateBarils();
             CreateProps();
         }
         else if (roomType == RoomType.Start)
         {
             // Starting room
-            CreateProps();
+            // CreateProps();
         }
         else
         {
@@ -83,7 +84,7 @@ public class Room : MonoBehaviour
     {
         foreach (Vector3 pos in spawnPositions)
         {
-            int index = Random.Range(-1, props.Length);
+            int index = Random.Range(0, props.Length);
             if (index < 0)
                 continue;
 
@@ -102,19 +103,22 @@ public class Room : MonoBehaviour
      */
     public GameObject CreatePropAtPosition(GameObject prop, Vector3 pos)
     {
-        var position = pos + transform.position;
-        GameObject obj = Instantiate(prop, position, Quaternion.identity, transform);
-        
-        
+        var position = pos;
+        Debug.Log("POSITION : " + position);
+        Debug.Log("TRANSFORM : " + transform.position);
+        Debug.Log("LOCAL POS : " + transform.localPosition);
+        GameObject obj = Instantiate(prop, transform.position + position, Quaternion.identity, transform);
         var objTransform = obj.GetComponent<Transform>();
-        Vector3 size = new Vector3();
+        Debug.Log("POS TRASN : " + objTransform.position);
+        Debug.Log("POS LOC TRASN : " + objTransform.localPosition);
+        //Vector3 size = new Vector3();
         if (obj.GetComponent<Collider>() != null)
         {
-            size = obj.GetComponent<Collider>().bounds.size;
+            //size = obj.GetComponent<Collider>().bounds.size;
         }
 
-        objTransform.position = objTransform.position +
-            new Vector3(0, size.z * 0.5f + wallThickness, 0); // Translation to floor (z direction because the prefab is rotated)
+        //objTransform.position = objTransform.position +
+          //  new Vector3(0, size.y * 0.5f, 0);
         obstacles.Add(obj);
         return obj;
     }
@@ -148,8 +152,10 @@ public class Room : MonoBehaviour
     {
         for (int i = 0; i < status.Length; i++)
         {
-            // doors[i].SetActive(status[i]);
+            float proba = Random.Range(0.0f, 1.0f);
             walls[i].SetActive(!status[i]);
+            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor);
+
         }
     }
 }
