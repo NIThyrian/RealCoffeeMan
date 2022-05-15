@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health = 100f;
+    [SerializeField] GameObject goldCoin;
 
     public void Die()
     {
@@ -12,7 +13,8 @@ public class Enemy : MonoBehaviour
         float randPoop = UnityEngine.Random.Range(0f, 1f);
         float randRocket = UnityEngine.Random.Range(0f, 1f);
 
-
+        Instantiate(goldCoin, transform.position, Quaternion.identity);
+        Destroy(gameObject);
 
         /*
         if(randomAmmo < ammoDropChance && randomMedkit < medkitDropChance) 
