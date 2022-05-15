@@ -26,6 +26,7 @@ public class Room : MonoBehaviour
     public GameObject portal;
     public GameObject shop;
     public GameObject spawner;
+    private Game game;
 
     public Vector3[] spawnPositions;
     public float chanceRoomHavingDoor = 0.5f;
@@ -41,6 +42,7 @@ public class Room : MonoBehaviour
 
     void Start()
     {
+        game = GetComponentInParent<Game>();
         InitializeRoom();
     }
 
