@@ -17,7 +17,7 @@ public class GunMika : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         tirFeu.Play();
         var balle = Instantiate(ballePrefab, spawnBalle.position, spawnBalle.rotation);
