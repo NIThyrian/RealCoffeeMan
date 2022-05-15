@@ -24,7 +24,6 @@ public class GunMika : MonoBehaviour
 
     void Shoot() {
         gunFire.Play();
-        Debug.Log(game);
         if(staticValues.GetSound()) game.GetComponent<AudioSource>().PlayOneShot(gunShot, 0.7F);
 
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);

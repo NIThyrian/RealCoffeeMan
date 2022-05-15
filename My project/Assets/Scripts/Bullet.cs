@@ -15,15 +15,12 @@ public class Bullet : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        Debug.Log("Collision of bullet");
         var obj = collision.gameObject.GetComponent<Enemy>();
 
         if (obj != null)
         {
-            Debug.Log("[Health] : " + obj.health + " -> Setting damage " + player.damage);
             obj.health -= player.damage;
             obj.Hit();
-            Debug.Log("[Health AFTER] : " + obj.health);
 
             if (obj.health <= 0f)
             {
