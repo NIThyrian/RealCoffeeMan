@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class GunMika : MonoBehaviour
 {
-    public Transform spawnBalle;
-    public GameObject ballePrefab;
-    public float vitesseBalles = 10;
+    public Transform spawnBullet;
+    public GameObject bulletPrefab;
     public ParticleSystem gunFire;
-    public AudioClip gunshot;
+    public AudioClip gunShot;
     public AudioSource audioSource;
+
+    private float vitesseBalles = 50f;
 
     void Update() {
         if(Input.GetButtonDown("Fire1")) {
@@ -17,10 +18,10 @@ public class GunMika : MonoBehaviour
 
     void Shoot() {
         gunFire.Play();
-        
-        audioSource.PlayOneShot(gunshot, 0.7F);
-        var balle = Instantiate(ballePrefab, spawnBalle.position, spawnBalle.rotation);
-        balle.GetComponent<Rigidbody>().velocity = spawnBalle.forward * vitesseBalles;
-        Destroy(balle, 5f);
+        audioSource.PlayOneShot(gunShot, 0.7F);
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = spawnBullet.forward * vitesseBalles;
+        Destroy(bullet, 5f);
     }
 }
