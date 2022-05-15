@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     public int speedUpgradeIncrement;
     public int damage;
     public int damageUpgradeIncrement;
-
+    private GameObject[] shops;
 
 
     private void Start() {
@@ -22,6 +22,8 @@ public class PlayerScript : MonoBehaviour
         jumpHeight = speed / 2;
         damage += component.playerDict["GunPurchased"] * damageUpgradeIncrement;
         currentHealth = maxHealth;
+        shops = GameObject.FindGameObjectsWithTag("Shop");
+
     }
 
     private void Update() {
@@ -37,6 +39,18 @@ public class PlayerScript : MonoBehaviour
         
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        foreach( GameObject shop in shops)
+        {
+            
+            if (Vector3.Distance(shop.transform.position, transform.position) < 5 && Input.GetKeyDown("e"))
+            {
+                Debug.Log("e");
+                Game component = GetComponentInParent(typeof(Game)) as Game;
+                component.E();
+
+            }
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -45,6 +59,7 @@ public class PlayerScript : MonoBehaviour
                 Game component = GetComponentInParent(typeof(Game)) as Game;
                 component.ChangeLevel();
             }
+           
             Rigidbody hitBody = hit.collider.attachedRigidbody;
             if(hitBody != null) {
                 Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);

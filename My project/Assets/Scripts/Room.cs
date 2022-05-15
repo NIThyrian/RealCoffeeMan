@@ -24,6 +24,8 @@ public class Room : MonoBehaviour
     public GameObject baril;
     public GameObject[] props;
     public GameObject portal;
+    public GameObject shop;
+
     public Vector3[] spawnPositions;
 
     public Color roomColor;
@@ -69,11 +71,12 @@ public class Room : MonoBehaviour
         else if (roomType == RoomType.Start)
         {
             // Starting room
-            CreateProps();
+            CreateShop();
         }
         else
         {
             // Ending room
+            CreateShop();
             CreatePortal();
         }
 
@@ -94,6 +97,10 @@ public class Room : MonoBehaviour
     public void CreatePortal()
     {
         CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+    }
+    public void CreateShop()
+    {
+        CreatePropAtPosition(shop, new Vector3(20, 0, 20));
     }
 
     /**

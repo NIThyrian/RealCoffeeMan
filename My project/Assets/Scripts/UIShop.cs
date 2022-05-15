@@ -27,11 +27,18 @@ public class UIShop : MonoBehaviour
         RandomizeCurrencies();
         SetBtnActions();
         UpdatePrices();
+        //Open();
     }
 
-    private void Update() {
+    public void Open()
+    {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        gameObject.SetActive(true);
+
+    }
+    private void Update() {
+  
     }
 
     private void SetBtnActions() {
@@ -154,7 +161,7 @@ public class UIShop : MonoBehaviour
         }
     }
 
-    private void CloseShop() {
+    public void CloseShop() {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }

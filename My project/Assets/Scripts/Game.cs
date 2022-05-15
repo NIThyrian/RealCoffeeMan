@@ -7,7 +7,8 @@ public class Game : MonoBehaviour
     public int level;
     public float difficultyFactor;
     public GameObject map;
-    private GameObject mapReference; 
+    private GameObject mapReference;
+    private UIShop shop;
 
     public Dictionary<string, int> playerDict = new Dictionary<string, int> {
             {"SteakPurchased", 0},
@@ -27,8 +28,16 @@ public class Game : MonoBehaviour
         difficultyFactor = 1;
         currentColor = Random.ColorHSV();
         mapReference = Instantiate(map, new Vector3(0.0f,0.0f,0.0f), Quaternion.identity, transform);
+        shop = GetComponentInChildren<UIShop>() as UIShop;
+        shop.CloseShop();
+        
     }
 
+    public void E()
+    {
+        shop.Open();
+
+    }
     void Update() {
     }
 
