@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     public GameObject[] props;
     public GameObject portal;
     public GameObject shop;
+    public GameObject spawner;
 
     public Vector3[] spawnPositions;
     public float chanceRoomHavingDoor = 0.5f;
@@ -91,6 +92,7 @@ public class Room : MonoBehaviour
             if (index < 0)
                 continue;
 
+            CreatePropAtPosition(spawner, pos);
             CreatePropAtPosition(props[index], pos);
         }
     }

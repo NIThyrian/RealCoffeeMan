@@ -8,11 +8,11 @@ public class PlayerScript : MonoBehaviour
     private bool isGrounded = false;
     private float gravity = -9.81f;
 
-    public int speed = 20;
-    public int speedUpgradeIncrement = 5;
+    public float speed = 20;
+    public float speedUpgradeIncrement = 5;
     public int damage = 50;
     public int damageUpgradeIncrement = 5;
-    private float jumpHeight;
+    public float jumpHeight;
     private bool nearShop;
 
     private GameObject[] shops;

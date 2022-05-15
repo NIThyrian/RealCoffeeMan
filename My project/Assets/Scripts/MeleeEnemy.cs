@@ -9,7 +9,7 @@ public class MeleeEnemy : Enemy
         Setup();
         SetupPathfinding();
         SetupDifficulty(5f);
-        damage = (int) (difficultyFactor * 5f);
+        damage = difficultyFactor * 5;
     }
 
     void Update()
