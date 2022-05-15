@@ -16,13 +16,14 @@ public class RangeEnemy : Enemy
         Setup();
         SetupPathfinding();
         SetupDifficulty(40.0f);
-        damage = (int) (difficultyFactor * 2);
+        damage = difficultyFactor * 1.2f;
     }
 
     void Update()
     {
         UpdateState();
         ApplyState();
+        UpdateHitVibe(Time.deltaTime);
     }
 
     protected override void Chase()

@@ -143,18 +143,23 @@ public class UIShop : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
         Game.isPaused = false;
-        playerUI.transform.Find("CashHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["CashHeld"].ToString();
+        playerUI.transform.Find("CaHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["CaHeld"].ToString();
+        playerUI.transform.Find("GoldHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["GoldHeld"].ToString();
+        playerUI.transform.Find("NotACubeHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["NotACubeHeld"].ToString();
+        playerUI.transform.Find("PoopHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["PoopHeld"].ToString();
+        playerUI.transform.Find("RocketHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["RocketHeld"].ToString();
+
 
         gameObject.SetActive(false);
         playerUI.SetActive(true);
     }
 
     public void RandomizeCurrencies() {
-        priceDict["CaPrice"] = Random.Range(0, 100);
-        priceDict["GoldPrice"] = Random.Range(0, 100);
-        priceDict["NotACubePrice"] = Random.Range(0, 100);
-        priceDict["PoopPrice"] = Random.Range(0, 100);
-        priceDict["RocketPrice"] = Random.Range(0, 100);
+        priceDict["CaPrice"] = Random.Range(0, 20);
+        priceDict["GoldPrice"] = Random.Range(0, 20);
+        priceDict["NotACubePrice"] = Random.Range(0, 20);
+        priceDict["PoopPrice"] = Random.Range(0, 20);
+        priceDict["RocketPrice"] = Random.Range(0, 20);
     }
 
     private void ClickedSteak() {

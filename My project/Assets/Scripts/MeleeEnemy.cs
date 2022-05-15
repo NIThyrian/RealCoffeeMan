@@ -9,13 +9,15 @@ public class MeleeEnemy : Enemy
         Setup();
         SetupPathfinding();
         SetupDifficulty(5f);
-        damage = difficultyFactor * 5;
+        damage = difficultyFactor * 1.5f;
     }
 
     void Update()
     {
         UpdateState();
         ApplyState();
+        UpdateHitVibe(Time.deltaTime);
+
     }
 
     protected override void Chase()

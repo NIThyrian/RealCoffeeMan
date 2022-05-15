@@ -3,15 +3,35 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     [SerializeField] PlayerScript player;
 
-    void OnCollisionEnter(Collision collision) {
-        if(collision.collider.tag == "Enemy") {
-            Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
-            enemy.health -= player.damage;
-            Debug.Log("Health : " + enemy.health);
-            if(enemy.health <= 0f) {
-                enemy.Die();
-            }
+
+    private float elapsedTime = 0f;
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > 5f)
+        {
+            Destroy(gameObject);
         }
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        Debug.Log("Collision of bullet");
+        var obj = collision.gameObject.GetComponent<Enemy>();
+
+        if (obj != null)
+        {
+            Debug.Log("[Health] : " + obj.health + " -> Setting damage " + player.damage);
+            obj.health -= player.damage;
+            obj.Hit();
+            Debug.Log("[Health AFTER] : " + obj.health);
+
+            if (obj.health <= 0f)
+            {
+                obj.Die();
+            }
+
+        }
+
         Destroy(gameObject);
     }
 
