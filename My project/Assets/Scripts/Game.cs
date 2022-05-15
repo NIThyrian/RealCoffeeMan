@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     [SerializeField] HealthBarScript healthBar;
     [SerializeField] UIShop shop;
     [SerializeField] GameObject playerUI;
+    [SerializeField] GameObject gameOver;
+    public GameObject win;
 
     public GameObject eText;
 
@@ -16,7 +19,7 @@ public class Game : MonoBehaviour
     public GameObject map;
     private GameObject mapReference;
 
-    public int maxHealth = 100;
+    public float maxHealth = 100;
     public float currentHealth;
     
     public Dictionary<string, int> playerDict = new Dictionary<string, int> {
@@ -29,7 +32,7 @@ public class Game : MonoBehaviour
             {"NotACubeHeld", 0},
             {"PoopHeld", 0},
             {"RocketHeld", 0},
-            {"CashHeld", 0}
+            {"CashHeld", 1150}
         };
     
     private StaticValues staticValues;
@@ -44,10 +47,17 @@ public class Game : MonoBehaviour
         currentColor = Random.ColorHSV();
         mapReference = Instantiate(map, new Vector3(0.0f,0.0f,0.0f), Quaternion.identity, transform);
 
+        gameOver = GameObject.FindWithTag("GameOver");
+        gameOver.SetActive(false);
+
+        win = GameObject.FindWithTag("Win");
+        win.SetActive(false);
+
+        var obj = GameObject.FindGameObjectWithTag("UniversLabel");
+        obj.GetComponent<TextMeshProUGUI>().text = "Univers #" + Random.Range(1, 10000);
+
+
         healthBar.SetMaxHealth(maxHealth);
-        shop.CloseShop();
-        
-        if(!staticValues.GetSound()) transform.GetComponent<AudioSource>().volume = 0;
     }
 
     public void E() {
@@ -55,6 +65,9 @@ public class Game : MonoBehaviour
     }
 
     public void ChangeLevel() {
+        var obj = GameObject.FindGameObjectWithTag("UniversLabel");
+        obj.GetComponent<TextMeshProUGUI>().text = "Univers #" + Random.Range(1, 10000);
+        
         Destroy(mapReference);
         currentColor = Random.ColorHSV();
         difficultyFactor ++;
@@ -65,6 +78,15 @@ public class Game : MonoBehaviour
     public void TakeDamage(float damage) {
         currentHealth -= damage;
         if(currentHealth > maxHealth) currentHealth = maxHealth;
+        if (currentHealth <= 0)
+        {
+            GetComponentInChildren<PlayerScript>().GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+            Game.isPaused = true;
+            gameOver.SetActive(true);
+        }
         healthBar.SetHealth(currentHealth);
     }
 
@@ -74,5 +96,10 @@ public class Game : MonoBehaviour
         playerUI.transform.Find(currencyName).GetChild(0).GetComponent<TextMeshProUGUI>().text = playerDict[currencyName].ToString();
 
 
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
