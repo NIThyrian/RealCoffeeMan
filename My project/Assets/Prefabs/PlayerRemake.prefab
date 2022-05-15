@@ -4929,7 +4929,7 @@ Transform:
   m_GameObject: {fileID: 2302836852206782446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.22, y: 1.707, z: 1.826}
-  m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2302836853536581997}
@@ -5016,13 +5016,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2302836853536581992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1279159619595775890}
-  - {fileID: 1606313477455187211}
   - {fileID: 5865842305219073761}
+  - {fileID: 1606313477455187211}
   m_Father: {fileID: 2302836852206782439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5035,7 +5035,7 @@ Camera:
   m_GameObject: {fileID: 2302836853536581992}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -5123,7 +5123,7 @@ RectTransform:
   m_Children:
   - {fileID: 2545333857259811325}
   m_Father: {fileID: 2302836853536581997}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5217,8 +5217,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5421084918805758761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.505, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302836852206782439}
@@ -5359,11 +5359,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.030154187
+      value: 0.030154184
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalScale.y
@@ -5375,15 +5375,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21400003
+      value: 0.21399999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.047999978
+      value: -0.048000097
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.38500008
+      value: 0.46410012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5550,3 +5550,4 @@ MonoBehaviour:
   gunFire: {fileID: 1279159620124936548}
   gunShot: {fileID: 8300000, guid: 472d9026939ba1345ab89a5ec673fa6b, type: 3}
   audioSource: {fileID: 1279159619734519085}
+  vitesseBalles: 100

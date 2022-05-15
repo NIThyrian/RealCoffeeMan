@@ -16,6 +16,8 @@ public class MeleeEnemy : Enemy
     {
         UpdateState();
         ApplyState();
+        UpdateHitVibe(Time.deltaTime);
+
     }
 
     protected override void Chase()

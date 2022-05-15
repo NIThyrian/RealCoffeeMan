@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Pathfinding;
+using System.Collections.Generic;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject player;
     protected Game game;
     protected Rigidbody rb;
+    protected SkinnedMeshRenderer mesh;
     protected float range;
     protected int difficultyFactor;
     protected float shootInterval;
@@ -29,11 +31,19 @@ public abstract class Enemy : MonoBehaviour
     public int damage = 1;
 
     public EnemyState state;
+    private bool hit = false;
+    private float elapsedHit = 0f;
+    private List<Color> savedColor = new List<Color>();
 
     protected void Setup()
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        if (mesh == null)
+        {
+            Debug.Log("NULLL");
+        }
     }
     protected void SetupPathfinding()
     {
@@ -50,13 +60,33 @@ public abstract class Enemy : MonoBehaviour
         range = rangeToStopFromPlayer;
         shootInterval = difficultyFactor;
         animator.speed = difficultyFactor * 0.5f + 0.5f;
-        health = difficultyFactor * 2 + 25;
+        health = difficultyFactor * 50 + 50;
 
         aiPath.endReachedDistance = range;
         aiPath.maxSpeed = 10f * difficultyFactor;
         aiPath.slowdownDistance = 0;
         OnStartedIdle();
         state = EnemyState.Idle;
+    }
+
+    protected void UpdateHitVibe(float dt)
+    {
+        if (hit)
+        {
+
+            elapsedHit += dt;
+            
+            if (elapsedHit > 0.25f)
+            {
+                hit = false;
+                elapsedHit = 0f;
+                for(int i = 0; i < mesh.materials.Length; i++)
+                {
+                    Material mat = mesh.materials[i];
+                    mat.color = savedColor[i];
+                }
+            }
+        }
     }
 
     protected void UpdateState()
@@ -109,6 +139,20 @@ public abstract class Enemy : MonoBehaviour
         animator.SetInteger("state", (int)EnemyState.Idle);
     }
 
+    public void Hit()
+    {
+        hit = true;
+        savedColor = new List<Color>();
+        foreach(Material mat in mesh.materials)
+        {
+            savedColor.Add(mat.color);
+        }
+
+        foreach (Material mat in mesh.materials)
+        {
+            mat.color = Color.Lerp(Color.Lerp(Color.red, Color.clear, 0.5f), mat.color, 0.5f);
+        }
+    }
 
     public void Die()
     {
@@ -119,12 +163,16 @@ public abstract class Enemy : MonoBehaviour
         int randRocket = UnityEngine.Random.Range(1, 100);
         int max = Mathf.Max(randCa, randGold, randNotACube, randPoop, randRocket);
 
-        if(max == randCa) Instantiate(caCoin, transform.position + caCoin.transform.position, Quaternion.identity);
-        else if(max == randGold) Instantiate(goldCoin, transform.position + goldCoin.transform.position, Quaternion.identity);
-        else if(max == randNotACube) Instantiate(notACubeCoin, transform.position + notACubeCoin.transform.position, Quaternion.identity);
-        else if(max == randPoop) Instantiate(poopCoin, transform.position + poopCoin.transform.position, Quaternion.identity);
-        else if(max == randRocket) Instantiate(rocketCoin, transform.position + rocketCoin.transform.position, Quaternion.identity);
-        
+        GameObject instance = null;
+        if(max == randCa) instance = Instantiate(caCoin, transform.position + caCoin.transform.position, Quaternion.identity);
+        else if(max == randGold) instance = Instantiate(goldCoin, transform.position + goldCoin.transform.position, Quaternion.identity);
+        else if(max == randNotACube) instance = Instantiate(notACubeCoin, transform.position + notACubeCoin.transform.position, Quaternion.identity);
+        else if(max == randPoop) instance = Instantiate(poopCoin, transform.position + poopCoin.transform.position, Quaternion.identity);
+        else if(max == randRocket) instance = Instantiate(rocketCoin, transform.position + rocketCoin.transform.position, Quaternion.identity);
+
+        if (instance != null)
+            instance.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(0, 1), 1, Random.Range(0, 1)) * 5.0f, ForceMode.Impulse);
+
         Destroy(gameObject);
     }
 }
