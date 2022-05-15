@@ -8,15 +8,12 @@ public class PlayerScript : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded = false;
     private float gravity = -9.81f;
-    private Rigidbody rb;
 
-    private void Start()
-    {
+    private void Start() {
         jumpHeight = speed / 2;
-
-        rb = GetComponent<Rigidbody>();
     }
-    void Update() {
+
+    private void Update() {
         isGrounded = controller.isGrounded;
         if(isGrounded && velocity.y < 0) velocity.y = 0;
 
@@ -31,12 +28,13 @@ public class PlayerScript : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.GetComponent<Rigidbody>() != null)
-        {
-            Debug.Log("COLLISION");
-            hit.gameObject.GetComponent<Rigidbody>().AddForce(rb.velocity.normalized * 100.0f);
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        if (hit.gameObject.GetComponent<Rigidbody>() != null) {
+            Rigidbody hitBody = hit.collider.attachedRigidbody;
+            if(hitBody != null) {
+                Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+                hitBody.AddForce(moveDir * 10.0f);
+            }
         }
     }
 }
