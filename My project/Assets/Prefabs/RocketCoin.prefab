@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4050136428587416330}
   - component: {fileID: 1124529961724376239}
   - component: {fileID: 2918285567866011749}
-  - component: {fileID: 5197330917355663767}
+  - component: {fileID: -861147933020468522}
+  - component: {fileID: 1097027529508170399}
   m_Layer: 0
   m_Name: RocketCoin
   m_TagString: Coin
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2755084529633257097, guid: 06ed49cb6881e2e49b131d4dacab4579, type: 3}
+  - {fileID: 2100000, guid: c79ed3ad76f4ec54fa1eb426d36202cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,8 +85,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5197330917355663767
-MeshCollider:
+--- !u!54 &-861147933020468522
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710729917388956080}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1097027529508170399
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +111,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -916961753305909737, guid: e1fe2f91a3b9d1b4fb59ef8513c8bde9, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.3, z: 0.15}
+  m_Center: {x: 0.08743635, y: 0.10028514, z: -2.1807568}

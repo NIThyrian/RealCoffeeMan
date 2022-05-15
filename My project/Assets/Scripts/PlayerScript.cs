@@ -58,7 +58,6 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log("TAG : " + hit.gameObject.tag);
         if(hit.gameObject.CompareTag("Coin")) {
 
             switch(hit.gameObject.name) {
