@@ -2107,7 +2107,7 @@ MonoBehaviour:
     Open shop
     : E
 
-'
+    Open/Close in game menu : escape'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e41f3f42725ec9458076fd54ffb9100, type: 2}
   m_sharedMaterial: {fileID: 8275608977495550198, guid: 0e41f3f42725ec9458076fd54ffb9100, type: 2}

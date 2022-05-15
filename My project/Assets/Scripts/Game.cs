@@ -10,6 +10,8 @@ public class Game : MonoBehaviour
     [SerializeField] GameObject playerUI;
     [SerializeField] GameObject gameOver;
     public GameObject win;
+    public GameObject goToMenu;
+
 
     public GameObject eText;
 
@@ -32,7 +34,7 @@ public class Game : MonoBehaviour
             {"NotACubeHeld", 0},
             {"PoopHeld", 0},
             {"RocketHeld", 0},
-            {"CashHeld", 1150}
+            {"CashHeld", 0}
         };
     
     private StaticValues staticValues;
@@ -53,13 +55,38 @@ public class Game : MonoBehaviour
         win = GameObject.FindWithTag("Win");
         win.SetActive(false);
 
+        goToMenu = GameObject.FindWithTag("GoToMenu");
+        goToMenu.SetActive(false);
+
         var obj = GameObject.FindGameObjectWithTag("UniversLabel");
         obj.GetComponent<TextMeshProUGUI>().text = "Univers #" + Random.Range(1, 10000);
 
 
         healthBar.SetMaxHealth(maxHealth);
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            if (goToMenu.activeSelf)
+            {
 
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1;
+                Game.isPaused = false;
+                goToMenu.SetActive(false);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Time.timeScale = 0;
+                Game.isPaused = true;
+                goToMenu.SetActive(true);
+            }
+
+        }
+    }
     public void E() {
         shop.OpenShop();
     }
