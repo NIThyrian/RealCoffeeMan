@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5129759984861687963}
   - component: {fileID: 5129759984861687960}
   - component: {fileID: 5129759984861687961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5129759984872272318}
   - component: {fileID: 5129759984872272319}
   - component: {fileID: 5129759984872272316}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 5129759985188308675}
   - component: {fileID: 5129759985188308672}
   - component: {fileID: 5129759985188308673}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,12 +303,13 @@ GameObject:
   - component: {fileID: 5129759985312520383}
   - component: {fileID: 5129759985312520380}
   - component: {fileID: 5129759985312520381}
-  m_Layer: 6
+  - component: {fileID: 6034459270469551016}
+  m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5129759985312520378
 Transform:
@@ -388,6 +389,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6034459270469551016
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129759985312520379}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5129759985444793302
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +417,7 @@ GameObject:
   - component: {fileID: 5129759985444793306}
   - component: {fileID: 5129759985444793307}
   - component: {fileID: 5129759985444793304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +571,8 @@ MonoBehaviour:
   - {fileID: 3710729917388956080, guid: a91fe75d15f73f54cb2357f9569a2117, type: 3}
   - {fileID: 1909547928257965523, guid: 7369958e9873afc4c9a03e42f7c1f1c1, type: 3}
   - {fileID: 4207504370777256383, guid: 4849764351adc3f49b267a5e67597aba, type: 3}
-  portal: {fileID: 4892468305659460082, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
+  - {fileID: 3095311938030178806, guid: d622666c215446f4da6b616d69d4933c, type: 3}
+  portal: {fileID: 8276839334163216304, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
   spawnPositions:
   - {x: -20, y: 0, z: 20}
   - {x: -3, y: 0, z: -10}
@@ -582,7 +600,7 @@ GameObject:
   - component: {fileID: 5129759986425671471}
   - component: {fileID: 5129759986425671468}
   - component: {fileID: 5129759986425671469}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,9 +789,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5129759986117127187}
     m_Modifications:
+    - target: {fileID: 709060606296369215, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2768135409818815579, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910437996266670242, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666514590830330821, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Intensity
@@ -838,6 +868,10 @@ PrefabInstance:
     - target: {fileID: 9184365050465475595, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184365050465475595, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9184365050465475595, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_IsActive

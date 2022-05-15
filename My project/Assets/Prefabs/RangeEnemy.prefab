@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5730942401948382209}
   - component: {fileID: 5730942401948382210}
   - component: {fileID: -8469361248434112613}
-  - component: {fileID: 5730942401948382211}
+  - component: {fileID: -2934812204049814505}
   m_Layer: 0
   m_Name: RangeEnemy
-  m_TagString: RangeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,9 +149,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.75
-  m_Height: 8
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &5730942401948382211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +164,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2833f70b0b6624141b3b6b76e7df68e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &-8469361248434112613
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730942401948382212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Height: 8
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
+--- !u!195 &-2934812204049814505
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730942401948382212}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+  health: 100
+  goldCoin: {fileID: 3710729917388956080, guid: 644a35beb41e4cf42ba5e312bfd79138, type: 3}
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +213,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 863174fbef875425ca78e4c949f12318, type: 2}
+    - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 4362962105363994262, guid: 4f01f7a0a64b61c44ac106978579fa11, type: 3}
     - target: {fileID: 5075479059614945226, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05

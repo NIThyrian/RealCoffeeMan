@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Map : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Map : MonoBehaviour
     {
         GenerateMap();
         Instantiate(player, transform.position + new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity, transform);
-
+        UpdatePathFinding();
         applyVibeToRooms();
     }
 
@@ -44,9 +45,24 @@ public class Map : MonoBehaviour
         
     }
 
+    public void UpdatePathFinding()
+    {
+        GetComponentInChildren<AstarPath>().Scan();
+    }
+
     public void applyVibeToRooms()
     {
+        Color color = GetComponentInParent<Game>().currentColor;
+        foreach (Material mat in GetComponent<Renderer>().materials)
+        {
+            Debug.Log(mat.name);
+            mat.SetColor("_Color", color);
+        }
 
+        foreach (Material mat in GetComponentsInChildren<Material>())
+        {
+            mat.SetColor("_Color", color);
+        }
     }
 
     public void GenerateMap()

@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 5730942401948382210}
   - component: {fileID: -8469361248434112613}
   - component: {fileID: 5273566516757757399}
+  - component: {fileID: -972836334864793017}
   m_Layer: 0
   m_Name: MeleeEnemy
-  m_TagString: MeleeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,9 +150,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.75
-  m_Height: 8
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &5273566516757757399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +165,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f06796daebbf745b2d967c28048b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &-972836334864793017
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5730942401948382212}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+  health: 100
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,6 +199,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c0721c9b4f3c4cb894656485acb9228, type: 2}
     - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 

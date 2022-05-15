@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
-        if(collision.collider.tag == "RangeEnemy") {
-            GameObject ennemy = collision.collider.gameObject;
-            ennemy.GetComponent<RangeEnemy>();
-        } else if(collision.collider.tag == "MeleeEnemy") {
-            GameObject ennemy = collision.collider.gameObject;
-            ennemy.GetComponent<MeleeEnemy>();
+        if(collision.collider.tag == "Enemy") {
+            Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
+            enemy.health -= 10f;
+            Debug.Log(enemy.health);
+            if(enemy.health <= 0f) {
+                enemy.Die();
+                Destroy(gameObject);
+            }
         }
     }
 }
