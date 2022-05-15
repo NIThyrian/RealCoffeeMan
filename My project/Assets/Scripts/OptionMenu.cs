@@ -21,9 +21,9 @@ public class OptionMenu : Menu
         playButton.GetComponent<Button>().onClick.AddListener(delegate { backOptionClicked(); });
         soundButton = transform.Find("SoundButton");
         soundButton.GetComponent<Button>().onClick.AddListener(delegate { soundClicked(); });
-        sliderX = transform.Find("SliderX").GetComponent<Slider>();
+        sliderX = transform.Find("SliderXPanel").GetChild(0).GetComponent<Slider>();
         sliderY.onValueChanged.AddListener(delegate { sensivityXChanged(); });
-        sliderX = transform.Find("SliderY").GetComponent<Slider>();
+        sliderX = transform.Find("SliderYPanel").GetChild(0).GetComponent<Slider>();
         sliderY.onValueChanged.AddListener(delegate { sensivityYChanged(); });
     }
     private void backOptionClicked()
