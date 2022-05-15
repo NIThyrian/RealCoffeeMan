@@ -9,7 +9,7 @@ public class MeleeEnemy : Enemy
         Setup();
         SetupPathfinding();
         SetupDifficulty(5f);
-        damage = (int) (difficultyFactor * 5f);
+        damage = difficultyFactor * 5;
     }
 
     void Update()
@@ -27,7 +27,6 @@ public class MeleeEnemy : Enemy
     public void AttackFront()
     {
         var dist = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log("Distance " + dist + " vs Range : " + range);
         if (dist <= range)
         {
             game.TakeDamage(damage);

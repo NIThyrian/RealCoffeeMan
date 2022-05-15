@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         var game = GetComponentInParent<Game>();
-        maxEnemy = (int)game.difficultyFactor * 5;
+        maxEnemy = game.difficultyFactor*2;
         StartCoroutine(spawnEnemy(meleeSwarmerInterval / game.difficultyFactor, meleeSwarmerPrefab));
         StartCoroutine(spawnEnemy(rangeSwarmerInterval / game.difficultyFactor, rangeSwarmerPrefab));
         // Instantiate(meleeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);

@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : Menu
 {
-    public bool soundOn;
-    private GameObject creds;
+    public CreditMenu creditMenu;
+    public OptionMenu optionMenu;
     // Start is called before the first frame update
     void Start()
     {
-        soundOn = true;
         setBtnActions();
     }
 
@@ -19,8 +18,8 @@ public class MainMenu : MonoBehaviour
     {
         Transform playButton = transform.Find("PlayButton");
         playButton.GetComponent<Button>().onClick.AddListener(delegate { playClicked(); });
-        Transform soundButton = transform.Find("SoundButton");
-        soundButton.GetComponent<Button>().onClick.AddListener(delegate { soundClicked(); });
+        Transform soundButton = transform.Find("OptionsButton");
+        soundButton.GetComponent<Button>().onClick.AddListener(delegate { optionsClicked(); });
         Transform creditsButton = transform.Find("CreditsButton");
         creditsButton.GetComponent<Button>().onClick.AddListener(delegate { creditsClicked(); });
         Transform quitButton = transform.Find("QuitButton");
@@ -30,24 +29,18 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("map");
     }
-    private void soundClicked()
+    private void optionsClicked()
     {
-        soundOn = false;
+        optionMenu.show(true);
+        show(false);
     }
     private void creditsClicked()
     {
-        foreach (Transform child in transform)
-            child.gameObject.SetActive(false);
-        creds = GameObject.FindGameObjectWithTag("creds");
-        creds.SetActive(true);
+        creditMenu.show(true);
+        show(false);
     }
     private void quitClicked()
     {
         Application.Quit();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

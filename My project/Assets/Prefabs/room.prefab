@@ -1740,9 +1740,12 @@ MonoBehaviour:
   - {fileID: 1670489181638148640}
   baril: {fileID: 2171093495516224349, guid: 06d14248d1756b0459d664011531063b, type: 3}
   props:
-  - {fileID: 3095311938030178806, guid: d622666c215446f4da6b616d69d4933c, type: 3}
-  portal: {fileID: 4904972830399715706, guid: 45fff35bb4606bd4c81be092ce7d1820, type: 3}
+  - {fileID: 7526381005100556711, guid: 5abc3a2ff8795294eb758d689cf04d27, type: 3}
+  - {fileID: 207868239746610361, guid: 79ca0e01782ff1249a86a330c1f34579, type: 3}
+  - {fileID: 1930496080374292470, guid: 1b174fa48540a304382e70dbf6b0101c, type: 3}
+  portal: {fileID: 1469047849690421719, guid: e55100ddae8111941aee73fa1c562c51, type: 3}
   shop: {fileID: 7081133391776215305, guid: 717435f13f98fca44aa18d38c1438cee, type: 3}
+  spawner: {fileID: 3095311938030178806, guid: d622666c215446f4da6b616d69d4933c, type: 3}
   spawnPositions:
   - {x: 0, y: 0, z: 0}
   chanceRoomHavingDoor: 0.5

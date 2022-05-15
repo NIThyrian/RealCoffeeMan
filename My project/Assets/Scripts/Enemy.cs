@@ -24,7 +24,7 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody rb;
     protected SkinnedMeshRenderer mesh;
     protected float range;
-    protected float difficultyFactor;
+    protected int difficultyFactor;
     protected float shootInterval;
     public float health = 100f;
     protected Animator animator;
@@ -56,7 +56,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void SetupDifficulty(float rangeToStopFromPlayer)
     {
-        difficultyFactor = game.level;
+        difficultyFactor = game.difficultyFactor;
         range = rangeToStopFromPlayer;
         shootInterval = difficultyFactor;
         animator.speed = difficultyFactor * 0.5f + 0.5f;
