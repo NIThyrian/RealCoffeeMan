@@ -22,6 +22,6 @@ public class GunMika : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
         bullet.GetComponent<Rigidbody>().velocity = spawnBullet.forward * vitesseBalles;
-        Destroy(bullet, 5f);
+        Destroy(bullet,5f);
     }
 }

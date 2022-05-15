@@ -27,13 +27,13 @@ public class Game : MonoBehaviour
             {"NotACubeHeld", 0},
             {"PoopHeld", 0},
             {"RocketHeld", 0},
-            {"CashHeld", 100}
+            {"CashHeld", 0}
         };
 
     private void Awake() {
         currentHealth = maxHealth;
     }
-
+    
     void Start() {
         level = 1;
         difficultyFactor = 1;

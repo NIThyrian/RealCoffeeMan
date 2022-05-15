@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
 
     public int speed = 20;
     public int speedUpgradeIncrement = 5;
-    public int damage = 10;
+    public int damage = 50;
     public int damageUpgradeIncrement = 5;
     private float jumpHeight;
     private bool nearShop;
@@ -21,8 +21,8 @@ public class PlayerScript : MonoBehaviour
     private void Start() {
         game = GetComponentInParent(typeof(Game)) as Game; 
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
+        jumpHeight = ((float) speed) / 3f;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
-        jumpHeight = speed / 2;
     }
 
     private void Update() {
@@ -48,9 +48,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         if(nearShop) {
-            Debug.Log("near");
             if(Input.GetKeyDown("e")) {
-                Debug.Log("near");
                 game.E();
                 game.eText.SetActive(false);
             }
@@ -59,28 +57,28 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.GetComponent<Rigidbody>() != null) {
-            if(hit.gameObject.CompareTag("Coin")) {
-                switch(hit.gameObject.name) {
-                    case("CaCoin(Clone)"):
-                        game.playerDict["CaHeld"] += 1;
-                        break;
-                    case("RocketCoin(Clone)"):
-                        game.playerDict["RocketHeld"] += 1;
-                        break;
-                    case("NotACubeCoin(Clone)"):
-                        game.playerDict["NotACubeHeld"] += 1;
-                        break;
-                    case("PoopCoin(Clone)"):
-                        game.playerDict["PoopHeld"] += 1;
-                        break;
-                    default:
-                        game.playerDict["GoldHeld"] += 1;
-                        break;
-                }
-                Destroy(hit.gameObject);
+        if(hit.gameObject.CompareTag("Coin")) {
+            switch(hit.gameObject.name) {
+                case("CaCoin(Clone)"):
+                    game.playerDict["CaHeld"] += 1;
+                    break;
+                case("RocketCoin(Clone)"):
+                    game.playerDict["RocketHeld"] += 1;
+                    break;
+                case("NotACubeCoin(Clone)"):
+                    game.playerDict["NotACubeHeld"] += 1;
+                    break;
+                case("PoopCoin(Clone)"):
+                    game.playerDict["PoopHeld"] += 1;
+                    break;
+                default:
+                    game.playerDict["GoldHeld"] += 1;
+                    break;
             }
+            Destroy(hit.gameObject);
+        }
 
+        if (hit.gameObject.GetComponent<Rigidbody>() != null) {
             if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
             
             Rigidbody hitBody = hit.collider.attachedRigidbody;
@@ -89,5 +87,7 @@ public class PlayerScript : MonoBehaviour
                 hitBody.AddForce(moveDir * 10.0f);
             }
         }
+
+
     }
 }

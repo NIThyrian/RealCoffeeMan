@@ -71,7 +71,7 @@ public class Room : MonoBehaviour
         else
         {
             // Ending room
-            CreateShop();
+            //CreateShop();
             CreatePortal();
         }
 
@@ -104,7 +104,7 @@ public class Room : MonoBehaviour
 
     public void CreateShop()
     {
-        CreatePropAtPosition(shop, new Vector3(20, 0, 20));
+        CreatePropAtPosition(shop, new Vector3(22, 0, 23));
     }
 
     /**

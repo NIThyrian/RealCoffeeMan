@@ -4968,12 +4968,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6017541787190823884}
-  maxHealth: 60
-  currentHealth: 60
   speed: 20
-  speedUpgradeIncrement: 1
-  damage: 1
-  damageUpgradeIncrement: 1
+  speedUpgradeIncrement: 5
+  damage: 10
+  damageUpgradeIncrement: 5
 --- !u!54 &-7975169123013370168
 Rigidbody:
   m_ObjectHideFlags: 0
