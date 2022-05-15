@@ -32,7 +32,7 @@ public class MainMenu : Menu
     private void optionsClicked()
     {
         optionMenu.show(true);
-        show(false); ;
+        show(false);
     }
     private void creditsClicked()
     {
@@ -41,7 +41,6 @@ public class MainMenu : Menu
     }
     private void quitClicked()
     {
-        Debug.Log("quit");
         Application.Quit();
     }
 }
