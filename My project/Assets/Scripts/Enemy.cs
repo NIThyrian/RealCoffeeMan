@@ -40,10 +40,6 @@ public abstract class Enemy : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        if (mesh == null)
-        {
-            Debug.Log("NULLL");
-        }
     }
     protected void SetupPathfinding()
     {

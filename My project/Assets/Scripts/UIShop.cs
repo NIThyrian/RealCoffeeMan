@@ -25,13 +25,14 @@ public class UIShop : MonoBehaviour
         };
 
     private void Start() {
+
         RandomizeCurrencies();
         SetBtnActions();
         UpdatePrices();
+        CloseShop();
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) CloseShop();
     }
 
     private void SetBtnActions() {
@@ -195,6 +196,12 @@ public class UIShop : MonoBehaviour
             game.playerDict["CashHeld"] -= priceDict["CoffeeCurrentPrice"];
             game.playerDict["CoffeePurchased"] += 1;
             UpdatePrices();
+            game.GetComponentInChildren<PlayerScript>().GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+            Game.isPaused = true;
+            game.win.SetActive(true);
         }
     }
 
