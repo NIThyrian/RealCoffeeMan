@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1023774033364404834}
   - component: {fileID: 4774632242126685769}
   - component: {fileID: 3601586366127808239}
-  - component: {fileID: -4937735234271910215}
+  - component: {fileID: 1793799508548307111}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 4774632242126685769}
---- !u!54 &-4937735234271910215
+--- !u!54 &1793799508548307111
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,7 +82,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &1023774034711241965
 GameObject:
   m_ObjectHideFlags: 0
