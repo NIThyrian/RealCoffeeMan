@@ -33,7 +33,10 @@ public class Game : MonoBehaviour
     private void Awake() {
         currentHealth = maxHealth;
     }
-
+    public void Update()
+    {
+        Debug.Log(playerDict);
+    }
     void Start() {
         level = 1;
         difficultyFactor = 1;

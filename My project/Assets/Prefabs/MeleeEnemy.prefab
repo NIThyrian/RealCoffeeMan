@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5730942401948382210}
   - component: {fileID: -8469361248434112613}
   - component: {fileID: 5273566516757757399}
-  - component: {fileID: -972836334864793017}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -131,7 +130,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5730942401948382212}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -171,28 +170,8 @@ MonoBehaviour:
   poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
   rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
   health: 100
---- !u!195 &-972836334864793017
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5730942401948382212}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  damage: 1
+  state: 0
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +179,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5730942401948382235}
     m_Modifications:
+    - target: {fileID: 2330807540315106565, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2eae21b79e90b7749acc8a4fd2fa2ec0, type: 2}
     - target: {fileID: 3037177940150228730, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -286,6 +269,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+--- !u!1 &2470505129187060438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6362012779423518770, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+  m_PrefabInstance: {fileID: 8791756244461386468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8547681001343370696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470505129187060438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb7dbe36ea2d4a4ca51f0ffb5f902e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
 --- !u!4 &2955258556947492972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5981264394212379272, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}

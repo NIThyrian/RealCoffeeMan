@@ -7,11 +7,12 @@ public class Bullet : MonoBehaviour {
         if(collision.collider.tag == "Enemy") {
             Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
             enemy.health -= player.damage;
+            Debug.Log("Health : " + enemy.health);
             if(enemy.health <= 0f) {
                 enemy.Die();
-                Destroy(gameObject);
             }
         }
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject);
     }
+
 }

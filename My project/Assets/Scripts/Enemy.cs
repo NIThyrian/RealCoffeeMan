@@ -1,10 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
-using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        Chasing,
+        Attacking,
+        Idle
+    }
+
     [SerializeField] GameObject goldCoin;
     [SerializeField] GameObject caCoin;
     [SerializeField] GameObject notACubeCoin;
@@ -13,17 +18,95 @@ public abstract class Enemy : MonoBehaviour
 
     protected AIPath aiPath;
     protected AIDestinationSetter aiDest;
+    protected GameObject player;
+    protected Game game;
+    protected Rigidbody rb;
     protected float range;
+    protected float difficultyFactor;
     protected float shootInterval;
     public float health = 100f;
+    protected Animator animator;
+    public int damage = 1;
+
+    public EnemyState state;
+
+    protected void Setup()
+    {
+        animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
+    }
     protected void SetupPathfinding()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         aiPath = GetComponent<AIPath>();
         aiDest = GetComponent<AIDestinationSetter>();
+        game = GetComponentInParent<Game>();
         aiDest.target = player.transform;
+    }
 
-        //game = GetComponentInParent<Game>();
+    protected void SetupDifficulty(float rangeToStopFromPlayer)
+    {
+        difficultyFactor = game.level;
+        range = rangeToStopFromPlayer;
+        shootInterval = difficultyFactor;
+        animator.speed = difficultyFactor * 0.5f + 0.5f;
+        health = difficultyFactor * 50 + 100;
+
+        aiPath.endReachedDistance = range;
+        aiPath.maxSpeed = 10f * difficultyFactor;
+        aiPath.slowdownDistance = 0;
+        OnStartedIdle();
+        state = EnemyState.Idle;
+    }
+
+    protected void UpdateState()
+    {
+        if (Vector3.Distance(player.transform.position, transform.position) <= range)
+        {
+            if (state != EnemyState.Attacking)
+                OnStartedAttacking();
+            state = EnemyState.Attacking;
+        } else
+        {
+            if (state != EnemyState.Chasing)
+                OnStartedChasing();
+            state = EnemyState.Chasing;
+        }
+
+    }
+
+    protected void ApplyState()
+    {
+
+        switch (state)
+        {
+            case EnemyState.Chasing:
+                Chase();
+                return;
+            case EnemyState.Attacking:
+                Attack();
+                return;
+            default:
+                return;
+        }
+    }
+
+    protected abstract void Chase();
+    protected abstract void Attack();
+
+    protected virtual void OnStartedChasing()
+    {
+        animator.SetInteger("state", (int)EnemyState.Chasing);
+
+    }
+    protected virtual void OnStartedAttacking()
+    {
+        animator.SetInteger("state", (int)EnemyState.Attacking);
+    }
+
+    protected virtual void OnStartedIdle()
+    {
+        animator.SetInteger("state", (int)EnemyState.Idle);
     }
 
 
