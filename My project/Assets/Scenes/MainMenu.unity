@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772c9ea4831641542a3e24b6e552db3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
+  mainMenu: {fileID: 1754564646}
 --- !u!1 &611477849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5842cf76e3c229249bc4396353007c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
+  mainMenu: {fileID: 1754564646}
 --- !u!222 &998646462
 CanvasRenderer:
   m_ObjectHideFlags: 0
