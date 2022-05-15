@@ -23,8 +23,6 @@ public class PlayerScript : MonoBehaviour
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
         jumpHeight = speed / 2;
-        
-        shops = GameObject.FindGameObjectsWithTag("Shop");
     }
 
     private void Update() {
@@ -41,6 +39,7 @@ public class PlayerScript : MonoBehaviour
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        shops = GameObject.FindGameObjectsWithTag("Shop");
         foreach(GameObject shop in shops) {
             if(Vector3.Distance(shop.transform.position, transform.position) < 5) {
                 nearShop = true;
@@ -49,7 +48,9 @@ public class PlayerScript : MonoBehaviour
         }
 
         if(nearShop) {
+            Debug.Log("near");
             if(Input.GetKeyDown("e")) {
+                Debug.Log("near");
                 game.E();
                 game.eText.SetActive(false);
             }

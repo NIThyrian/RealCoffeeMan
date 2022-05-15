@@ -38,15 +38,9 @@ public class Room : MonoBehaviour
     private float wallThickness = 1.0f;
     private List<GameObject> obstacles = new List<GameObject>();
 
-    // Start is called before the first frame update
     void Start()
     {
         InitializeRoom();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public List<GameObject> GetObstacles()
@@ -95,29 +89,19 @@ public class Room : MonoBehaviour
         }
     }
 
-    public static readonly int[] rotations =
-{
-    0,
-    -90,
-    90,
-    -180
-    };
+    public static readonly int[] rotations = {0, -90, 90, -180 };
     public void CreatePortal()
     {
-
         GameObject p = CreatePropAtPosition(portal, new Vector3(0, 0, 0));
-        for (int i = 0; i<walls.Length; i++)
-        
+        for (int i = 0; i < walls.Length; i++)
         {
-
             if (walls[i].activeSelf == false){
                 var transform = p.GetComponent<Transform>();
-                Debug.Log(rotations[i]);
                 transform.Rotate(new Vector3(0,rotations[i], 0));
-                Debug.Log(i);
             }
         }
     }
+
     public void CreateShop()
     {
         CreatePropAtPosition(shop, new Vector3(20, 0, 20));
@@ -131,15 +115,7 @@ public class Room : MonoBehaviour
     {
         var position = pos;
         GameObject obj = Instantiate(prop, transform.position + position, Quaternion.identity, transform);
-        var objTransform = obj.GetComponent<Transform>();
-        //Vector3 size = new Vector3();
-        if (obj.GetComponent<Collider>() != null)
-        {
-            //size = obj.GetComponent<Collider>().bounds.size;
-        }
 
-        //objTransform.position = objTransform.position +
-          //  new Vector3(0, size.y * 0.5f, 0);
         obstacles.Add(obj);
         return obj;
     }
@@ -175,8 +151,7 @@ public class Room : MonoBehaviour
         {
             float proba = Random.Range(0.0f, 1.0f);
             walls[i].SetActive(!status[i]);
-            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor &&roomType != RoomType.Start);
-
+            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor && roomType != RoomType.Start);
         }
     }
 }
