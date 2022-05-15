@@ -32,6 +32,8 @@ public class UIShop : MonoBehaviour
     private void Update() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if(Input.GetKeyDown(KeyCode.Escape)) CloseShop();
     }
 
     private void SetBtnActions() {
@@ -156,6 +158,7 @@ public class UIShop : MonoBehaviour
 
     private void CloseShop() {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         gameObject.SetActive(false);
     }
 

@@ -165,6 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f06796daebbf745b2d967c28048b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldCoin: {fileID: 7592391832751339561, guid: 644a35beb41e4cf42ba5e312bfd79138, type: 3}
+  caCoin: {fileID: 3710729917388956080, guid: 23062bde1ef3ea24c9af87c61bcc66ed, type: 3}
+  notACubeCoin: {fileID: 3710729917388956080, guid: 2b752bca920281a4fb6736cffa82108c, type: 3}
+  poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
+  rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
+  health: 100
 --- !u!195 &-972836334864793017
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -187,7 +193,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
-  health: 100
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
