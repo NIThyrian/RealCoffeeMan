@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
         float randNotACube = UnityEngine.Random.Range(0f, 1f);
         float randPoop = UnityEngine.Random.Range(0f, 1f);
         float randRocket = UnityEngine.Random.Range(0f, 1f);
-
+        
         Instantiate(goldCoin, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
