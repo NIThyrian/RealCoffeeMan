@@ -121,8 +121,6 @@ public class Room : MonoBehaviour
 
     public void CreateBarils()
     {
-
-
         int nbObject = 1;// Random.Range(minBarilPerRoom, maxBarilPerRoom);
         int counter = 0;
         while (counter++ < nbObject)

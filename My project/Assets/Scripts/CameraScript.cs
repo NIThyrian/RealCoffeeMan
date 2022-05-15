@@ -6,11 +6,11 @@ public class CameraScript : MonoBehaviour
     private float mouseSens = 1000f;
     private float xRotation = 0f;
 
-    void Start() {
+    private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update() {
+    private void Update() {
         float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 

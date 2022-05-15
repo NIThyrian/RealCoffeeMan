@@ -5537,4 +5537,8 @@ MonoBehaviour:
   vitesseBalles: 80
   tirFeu: {fileID: 1279159620124936548}
   gunshot: {fileID: 8300000, guid: 472d9026939ba1345ab89a5ec673fa6b, type: 3}
+  spawnBullet: {fileID: 1279159619595775890}
+  bulletPrefab: {fileID: 2145967135167875222, guid: 60ef5fdd5d866464796c719f2f00d052, type: 3}
+  gunFire: {fileID: 1279159620124936548}
+  gunShot: {fileID: 8300000, guid: 472d9026939ba1345ab89a5ec673fa6b, type: 3}
   audioSource: {fileID: 1279159619734519085}

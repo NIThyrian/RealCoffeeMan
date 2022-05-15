@@ -30,10 +30,9 @@ public class Game : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown("f")) ChangeLevel();
     }
 
-    void ChangeLevel() {
+    public void ChangeLevel() {
         Destroy(mapReference);
         currentColor = Random.ColorHSV();
         level++;

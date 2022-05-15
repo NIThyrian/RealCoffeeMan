@@ -1,30 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GunMika : MonoBehaviour
 {
-    public Transform spawnBalle;
-    public GameObject ballePrefab;
-    public float vitesseBalles = 10;
-    public ParticleSystem tirFeu;
-    public AudioClip gunshot;
+    public Transform spawnBullet;
+    public GameObject bulletPrefab;
+    public ParticleSystem gunFire;
+    public AudioClip gunShot;
     public AudioSource audioSource;
 
-    void Update()
-    {
-        if(Input.GetButtonDown("Fire1"))
-        {
+    private float vitesseBalles = 50f;
+
+    void Update() {
+        if(Input.GetButtonDown("Fire1")) {
             Shoot();
         }
     }
 
-    void Shoot()
-    {
-        tirFeu.Play();
-        audioSource.PlayOneShot(gunshot, 0.7F);
-        var balle = Instantiate(ballePrefab, spawnBalle.position, spawnBalle.rotation);
-        balle.GetComponent<Rigidbody>().velocity = spawnBalle.forward * vitesseBalles;
-        Destroy(balle, 5f);
+    void Shoot() {
+        gunFire.Play();
+        audioSource.PlayOneShot(gunShot, 0.7F);
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = spawnBullet.forward * vitesseBalles;
+        Destroy(bullet, 5f);
     }
 }
