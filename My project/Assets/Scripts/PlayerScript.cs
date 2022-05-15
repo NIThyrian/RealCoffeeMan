@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
     private void Start() {
         game = GetComponentInParent(typeof(Game)) as Game; 
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
-        jumpHeight = speed / 2;
+        jumpHeight = ((float) speed) / 3f;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
         currentHealth = maxHealth;
         shops = GameObject.FindGameObjectsWithTag("Shop");

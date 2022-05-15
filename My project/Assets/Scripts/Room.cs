@@ -112,15 +112,13 @@ public class Room : MonoBehaviour
 
             if (walls[i].activeSelf == false){
                 var transform = p.GetComponent<Transform>();
-                Debug.Log(rotations[i]);
                 transform.Rotate(new Vector3(0,rotations[i], 0));
-                Debug.Log(i);
             }
         }
     }
     public void CreateShop()
     {
-        CreatePropAtPosition(shop, new Vector3(20, 0, 20));
+        CreatePropAtPosition(shop, new Vector3(22, 0, 23));
     }
 
     /**

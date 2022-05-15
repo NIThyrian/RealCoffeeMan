@@ -77,19 +77,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4038384984164428152, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -115,19 +115,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3693207965308040130, guid: cdd01266cdd0494458b0c4795cc4bce8, type: 3}
   m_PrefabInstance: {fileID: 645611675777720474}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5426827040155263859
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4302421390793331544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.03, y: 0.025, z: 0.030000009}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1629013044769651803
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +131,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!65 &5426827040155263859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302421390793331544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.025, z: 0.030000009}
+  m_Center: {x: 0, y: 0, z: 0}
