@@ -9,6 +9,8 @@ TagManager:
   - Portal
   - Enemy
   - creds
+  - Shop
+  - Coin
   layers:
   - Default
   - TransparentFX

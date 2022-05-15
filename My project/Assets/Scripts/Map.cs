@@ -34,7 +34,7 @@ public class Map : MonoBehaviour
     void Start()
     {
         GenerateMap();
-        Instantiate(player, transform.position + new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity, transform);
+        Instantiate(player, transform.position + new Vector3(0.0f, 5.0f, 0.0f), transform.rotation* Quaternion.Euler(0f,90f,0f), transform);
         UpdatePathFinding();
         applyVibeToRooms();
     }
@@ -61,13 +61,13 @@ public class Map : MonoBehaviour
 
         List<Direction> map = new List<Direction>(GenerateDirections());
 
-        Vector3 position = transform.position;
+        Vector3 position = new Vector3(0, 0, 0);
         Room spawnRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
         spawnRoom.SetType(Room.RoomType.Start);
         rooms.Add(spawnRoom);
         spawnRoom.UpdateRooms(new bool[] { true, false, false, false }); // Forward
         Vector3 dirVec = directions[(int)map[0]];
-        dirVec.Scale(roomSize);
+        dirVec.Scale(new Vector3(roomSize.x, 1, roomSize.y));
 
         position += dirVec;
 
@@ -81,6 +81,7 @@ public class Map : MonoBehaviour
             Room newRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
             newRoom.SetType(Room.RoomType.Normal);
             rooms.Add(newRoom);
+            newRoom.UpdateRooms(GetActiveWallsFromDirection(new Direction[] { GetOppositeDirection(map[map.Count - 2]) })); // Forward
 
             Direction[] openedDirection =
             {
