@@ -10,46 +10,48 @@ public class OptionMenu : Menu
     private Transform soundButton;
     private Slider sliderX;
     private Slider sliderY;
-    static public bool soundEnabled;
-    static public float xSensivity;
-    static public float ySensivity;
+    private TextMeshProUGUI sliderXValue;
+    private TextMeshProUGUI sliderYValue;
 
-    void Start()
-    {
-        soundEnabled = true;
-        Transform playButton = transform.Find("BackButton");
-        playButton.GetComponent<Button>().onClick.AddListener(delegate { backOptionClicked(); });
+    static public bool soundEnabled = true;
+    static public float xSensivity = 50;
+    static public float ySensivity = 50;
+
+    void Start() {
+        Transform backButton = transform.Find("BackButton");
+        backButton.GetComponent<Button>().onClick.AddListener(delegate { backOptionClicked(); });
+
         soundButton = transform.Find("SoundButton");
         soundButton.GetComponent<Button>().onClick.AddListener(delegate { soundClicked(); });
-        sliderX = transform.Find("SliderX").GetComponent<Slider>();
-        sliderY.onValueChanged.AddListener(delegate { sensivityXChanged(); });
-        sliderX = transform.Find("SliderY").GetComponent<Slider>();
+
+        sliderX = transform.Find("SliderXPanel").GetChild(0).GetComponent<Slider>();
+        sliderX.onValueChanged.AddListener(delegate { sensivityXChanged(); });
+        sliderXValue = transform.Find("SliderXPanel").GetChild(2).GetComponent<TextMeshProUGUI>();
+
+        sliderY = transform.Find("SliderYPanel").GetChild(0).GetComponent<Slider>();
         sliderY.onValueChanged.AddListener(delegate { sensivityYChanged(); });
+        sliderYValue = transform.Find("SliderYPanel").GetChild(2).GetComponent<TextMeshProUGUI>();
     }
-    private void backOptionClicked()
-    {
+
+    private void backOptionClicked() {
         show(false);
         mainMenu.show(true);
     }
-    private void soundClicked()
-    {
+
+    private void soundClicked() {
         string text = "Enable Sound";
-        if(soundEnabled)
-        {
-            text = "Disable Sound";
-        }
+        if(soundEnabled) text = "Disable Sound";
         soundButton.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
         soundEnabled = !soundEnabled;
     }
-    private void sensivityXChanged()
-    {
-        xSensivity = sliderX.value;
-        Debug.Log(xSensivity);
-    }
-    private void sensivityYChanged()
-    {
-        ySensivity = sliderY.value;
-        Debug.Log(ySensivity);
 
+    private void sensivityXChanged() {
+        sliderXValue.text = sliderX.value.ToString();
+        xSensivity = sliderX.value;
+    }
+
+    private void sensivityYChanged() {
+        sliderYValue.text = sliderY.value.ToString();
+        ySensivity = sliderY.value;
     }
 }
