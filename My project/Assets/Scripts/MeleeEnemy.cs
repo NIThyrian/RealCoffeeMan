@@ -8,8 +8,8 @@ public class MeleeEnemy : Enemy
     void Start()
     {
         SetupPathfinding();
-        /*
-        float difficultyFactor = 1.25f;
+        
+        float difficultyFactor = 5.0f;
         float range = 1f;
         float shootInterval = 2f / difficultyFactor;
 
@@ -18,6 +18,6 @@ public class MeleeEnemy : Enemy
         aiPath.endReachedDistance = range;
         aiPath.maxSpeed = 2f * difficultyFactor;
         aiPath.slowdownDistance = 2 * aiPath.endReachedDistance;
-        */
+        
     }
 }

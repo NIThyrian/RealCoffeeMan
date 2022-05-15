@@ -8,9 +8,9 @@ public class RangeEnemy : Enemy
     void Start()
     {
         SetupPathfinding();
-        /*
-        float difficultyFactor = 1.25f;
-        float range = 11f * difficultyFactor;
+        
+        float difficultyFactor = 5.0f;
+        float range = 1f; // 11f * difficultyFactor;
         float shootInterval = 2f / difficultyFactor;
 
         // On veut que le range puisse tirer avant d'etre a sa distance maximale
@@ -18,6 +18,6 @@ public class RangeEnemy : Enemy
         aiPath.endReachedDistance = range - 1f;
         aiPath.maxSpeed = 2f * difficultyFactor;
         aiPath.slowdownDistance = 2 * aiPath.endReachedDistance;
-        */
+        
     }
 }
