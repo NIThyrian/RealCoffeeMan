@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -7,10 +6,8 @@ public class EnemySpawner : MonoBehaviour
     private int maxEnemy;
     private int enemyCounter = 0;
     //private Game game;
-    [SerializeField]
-    private GameObject meleeSwarmerPrefab;
-    [SerializeField]
-    private GameObject rangeSwarmerPrefab;
+    [SerializeField] private GameObject meleeSwarmerPrefab;
+    [SerializeField] private GameObject rangeSwarmerPrefab;
 
     private float meleeSwarmerInterval = 5f;
     private float rangeSwarmerInterval = 10f;
