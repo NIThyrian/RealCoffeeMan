@@ -77,7 +77,7 @@ public class Room : MonoBehaviour
         else
         {
             // Ending room
-            CreateShop();
+            //CreateShop();
             CreatePortal();
         }
 
@@ -97,10 +97,10 @@ public class Room : MonoBehaviour
 
     public static readonly int[] rotations =
 {
-    0,
+    180,
     -90,
     90,
-    -180
+    0
     };
     public void CreatePortal()
     {

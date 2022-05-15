@@ -27,7 +27,7 @@ public class Game : MonoBehaviour
             {"NotACubeHeld", 0},
             {"PoopHeld", 0},
             {"RocketHeld", 0},
-            {"CashHeld", 100}
+            {"CashHeld", 0}
         };
 
     private void Awake() {

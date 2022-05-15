@@ -4968,8 +4968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6017541787190823884}
-  maxHealth: 60
-  currentHealth: 60
   speed: 20
   speedUpgradeIncrement: 1
   damage: 1
