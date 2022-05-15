@@ -3,14 +3,25 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    private float speed = 20f;
     private float jumpHeight = 5f;
     private Vector3 velocity;
     private bool isGrounded = false;
     private float gravity = -9.81f;
+    public int maxHealth;
+    public int currentHealth;
+    public int speed = 20;
+    public int speedUpgradeIncrement;
+    public int damage;
+    public int damageUpgradeIncrement;
+
+
 
     private void Start() {
+        Game component = GetComponentInParent(typeof(Game)) as Game; 
+        speed += component.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         jumpHeight = speed / 2;
+        damage += component.playerDict["GunPurchased"] * damageUpgradeIncrement;
+        currentHealth = maxHealth;
     }
 
     private void Update() {

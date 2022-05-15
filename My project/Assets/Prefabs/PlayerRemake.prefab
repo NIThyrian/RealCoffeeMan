@@ -4968,6 +4968,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6017541787190823884}
+  maxHealth: 60
+  currentHealth: 60
+  speed: 20
+  speedUpgradeIncrement: 1
+  damage: 1
+  damageUpgradeIncrement: 1
 --- !u!54 &-7975169123013370168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5532,11 +5538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e854335fa685404ea2e4b3f72ad3d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnBalle: {fileID: 1279159619595775890}
-  ballePrefab: {fileID: 2145967135167875222, guid: 60ef5fdd5d866464796c719f2f00d052, type: 3}
-  vitesseBalles: 80
-  tirFeu: {fileID: 1279159620124936548}
-  gunshot: {fileID: 8300000, guid: 472d9026939ba1345ab89a5ec673fa6b, type: 3}
   spawnBullet: {fileID: 1279159619595775890}
   bulletPrefab: {fileID: 2145967135167875222, guid: 60ef5fdd5d866464796c719f2f00d052, type: 3}
   gunFire: {fileID: 1279159620124936548}
