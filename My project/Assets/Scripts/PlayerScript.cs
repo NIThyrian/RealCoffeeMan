@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start() {
         game = GetComponentInParent(typeof(Game)) as Game; 
+
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         jumpHeight = ((float) speed) / 3f;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
@@ -60,16 +61,16 @@ public class PlayerScript : MonoBehaviour
         if(hit.gameObject.CompareTag("Coin")) {
             switch(hit.gameObject.name) {
                 case("CaCoin(Clone)"):
-                    game.playerDict["CaHeld"] += 1;
+                    game.AddCurency("CaHeld", 1);
                     break;
                 case("RocketCoin(Clone)"):
-                    game.playerDict["RocketHeld"] += 1;
+                    game.AddCurency("RocketHeld", 1);
                     break;
                 case("NotACubeCoin(Clone)"):
-                    game.playerDict["NotACubeHeld"] += 1;
+                    game.AddCurency("NotACubeHeld", 1);
                     break;
                 case("PoopCoin(Clone)"):
-                    game.playerDict["PoopHeld"] += 1;
+                    game.AddCurency("PoopHeld", 1);
                     break;
                 default:
                     game.playerDict["GoldHeld"] += 1;
