@@ -29,8 +29,7 @@ public class Game : MonoBehaviour
         mapReference = Instantiate(map, new Vector3(0.0f,0.0f,0.0f), Quaternion.identity, transform);
     }
 
-    void Update() {
-    }
+    void Update() { }
 
     public void ChangeLevel() {
         Destroy(mapReference);

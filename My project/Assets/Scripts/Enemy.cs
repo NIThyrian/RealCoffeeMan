@@ -6,6 +6,10 @@ using UnityEngine.AI;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject goldCoin;
+    [SerializeField] GameObject caCoin;
+    [SerializeField] GameObject notACubeCoin;
+    [SerializeField] GameObject poopCoin;
+    [SerializeField] GameObject rocketCoin;
 
     protected AIPath aiPath;
     protected AIDestinationSetter aiDest;
@@ -25,26 +29,19 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
-        float randCa = UnityEngine.Random.Range(0f, 1f);
-        float randGold = UnityEngine.Random.Range(0f, 1f);
-        float randNotACube = UnityEngine.Random.Range(0f, 1f);
-        float randPoop = UnityEngine.Random.Range(0f, 1f);
-        float randRocket = UnityEngine.Random.Range(0f, 1f);
-        
-        Instantiate(goldCoin, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        int randCa = UnityEngine.Random.Range(1, 100);
+        int randGold = UnityEngine.Random.Range(1, 100);
+        int randNotACube = UnityEngine.Random.Range(1, 100);
+        int randPoop = UnityEngine.Random.Range(1, 100);
+        int randRocket = UnityEngine.Random.Range(1, 100);
+        int max = Mathf.Max(randCa, randGold, randNotACube, randPoop, randRocket);
 
-        /*
-        if(randomAmmo < ammoDropChance && randomMedkit < medkitDropChance) 
-        {
-            Vector3 posLeft = new Vector3(transform.position.x - 0.3f, transform.position.y, transform.position.z);
-            Vector3 posRight = new Vector3(transform.position.x + 0.3f, transform.position.y, transform.position.z);
-            Instantiate(ammoBox, posLeft, Quaternion.identity);
-            Instantiate(medkitBox, posRight, Quaternion.identity);
-        }
-        else if(randomMedkit < medkitDropChance) Instantiate(medkitBox, transform.position, Quaternion.identity);
-        else if(randomAmmo < ammoDropChance) Instantiate(ammoBox, transform.position, Quaternion.identity);
+        if(max == randCa) Instantiate(caCoin, transform.position + caCoin.transform.position, Quaternion.identity);
+        else if(max == randGold) Instantiate(goldCoin, transform.position + goldCoin.transform.position, Quaternion.identity);
+        else if(max == randNotACube) Instantiate(notACubeCoin, transform.position + notACubeCoin.transform.position, Quaternion.identity);
+        else if(max == randPoop) Instantiate(poopCoin, transform.position + poopCoin.transform.position, Quaternion.identity);
+        else if(max == randRocket) Instantiate(rocketCoin, transform.position + rocketCoin.transform.position, Quaternion.identity);
+        
         Destroy(gameObject);
-        */
     }
 }
