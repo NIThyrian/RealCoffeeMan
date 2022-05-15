@@ -10,6 +10,12 @@ public class GunMika : MonoBehaviour
 
     public float vitesseBalles = 50f;
 
+    private StaticValues staticValues;
+
+    void Start() {
+        staticValues = new StaticValues();
+    }
+
     void Update() {
         if(Input.GetButtonDown("Fire1") && !Game.isPaused) {
             Shoot();
@@ -18,7 +24,8 @@ public class GunMika : MonoBehaviour
 
     void Shoot() {
         gunFire.Play();
-        audioSource.PlayOneShot(gunShot, 0.7F);
+        Debug.Log(staticValues.GetSound());
+        //if(staticValues.GetSound()) audioSource.PlayOneShot(gunShot, 0.7F);
 
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
         bullet.GetComponent<Rigidbody>().velocity = spawnBullet.forward * vitesseBalles;

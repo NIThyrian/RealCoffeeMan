@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -42,10 +40,10 @@ public class OptionMenu : Menu
     }
 
     private void soundClicked() {
+        staticValues.InvSound();
         string text = "Enable Sound";
         if(staticValues.GetSound()) text = "Disable Sound";
         soundButton.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
-        staticValues.InvSound();
     }
 
     private void sensivityXChanged() {
