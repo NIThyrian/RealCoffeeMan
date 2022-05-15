@@ -17,7 +17,7 @@ public class Game : MonoBehaviour
     private GameObject mapReference;
 
     public int maxHealth = 100;
-    public int currentHealth;
+    public float currentHealth;
     
     public Dictionary<string, int> playerDict = new Dictionary<string, int> {
             {"SteakPurchased", 0},
@@ -57,7 +57,7 @@ public class Game : MonoBehaviour
         mapReference = Instantiate(map, map.transform.position, Quaternion.identity, transform);
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(float damage) {
         currentHealth -= damage;
         if(currentHealth > maxHealth) currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);

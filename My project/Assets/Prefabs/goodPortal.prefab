@@ -39,9 +39,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7275489326223711794}
     m_Modifications:
+    - target: {fileID: 6940906426538079709, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940906426595377068, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182378, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_RootOrder
@@ -104,6 +112,10 @@ PrefabInstance:
       value: portail (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182379, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940906427247078123, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_TagString
       value: Portal
       objectReference: {fileID: 0}
@@ -183,9 +195,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7275489326223711794}
     m_Modifications:
+    - target: {fileID: 6940906426538079709, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940906426595377068, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182378, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_RootOrder
@@ -248,6 +268,10 @@ PrefabInstance:
       value: portail
       objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182379, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940906427247078123, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_TagString
       value: Portal
       objectReference: {fileID: 0}

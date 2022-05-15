@@ -72,22 +72,24 @@ public class PlayerScript : MonoBehaviour
                 case("PoopCoin(Clone)"):
                     game.AddCurency("PoopHeld", 1);
                     break;
+                case ("GoldCoin(Clone)"):
+                    game.AddCurency("GoldHeld", 1);
+                    break;
                 default:
-                    game.playerDict["GoldHeld"] += 1;
                     break;
             }
             Destroy(hit.gameObject);
         }
 
-        if (hit.gameObject.GetComponent<Rigidbody>() != null) {
-            if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
+       
+        if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
             
-            Rigidbody hitBody = hit.collider.attachedRigidbody;
-            if(hitBody != null) {
-                Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-                hitBody.AddForce(moveDir * 10.0f);
-            }
+        Rigidbody hitBody = hit.collider.attachedRigidbody;
+        if(hitBody != null) {
+            Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            hitBody.AddForce(moveDir * 10.0f);
         }
+        
 
 
     }
