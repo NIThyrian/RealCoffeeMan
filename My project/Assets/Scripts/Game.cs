@@ -28,9 +28,12 @@ public class Game : MonoBehaviour
             {"RocketHeld", 0},
             {"CashHeld", 0}
         };
+    
+    private StaticValues staticValues;
 
     private void Awake() {
         currentHealth = maxHealth;
+        staticValues = new StaticValues();
     }
     
     void Start() {
@@ -40,6 +43,8 @@ public class Game : MonoBehaviour
 
         healthBar.SetMaxHealth(maxHealth);
         shop.CloseShop();
+        
+        if(!staticValues.GetSound()) transform.GetComponent<AudioSource>().volume = 0;
     }
 
     public void E() {
