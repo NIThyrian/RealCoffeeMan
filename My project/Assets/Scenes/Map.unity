@@ -7387,7 +7387,6 @@ MonoBehaviour:
   shop: {fileID: 159648855}
   eText: {fileID: 2141165557}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  level: 0
   difficultyFactor: 0
   map: {fileID: 7472337554998228775, guid: 0481e8d6271afb1469941867a6d2e752, type: 3}
   maxHealth: 100

@@ -6,6 +6,7 @@ using TMPro;
 
 public class OptionMenu : Menu
 {
+    [SerializeField] CameraScript cameraScript;
     public MainMenu mainMenu;
     private Transform soundButton;
     private Slider sliderX;
@@ -13,9 +14,11 @@ public class OptionMenu : Menu
     private TextMeshProUGUI sliderXValue;
     private TextMeshProUGUI sliderYValue;
 
-    static public bool soundEnabled = true;
-    static public float xSensivity = 50;
-    static public float ySensivity = 50;
+    private StaticValues staticValues;
+
+    void Awake() {
+        staticValues = new StaticValues();
+    }
 
     void Start() {
         Transform backButton = transform.Find("BackButton");
@@ -40,18 +43,18 @@ public class OptionMenu : Menu
 
     private void soundClicked() {
         string text = "Enable Sound";
-        if(soundEnabled) text = "Disable Sound";
+        if(staticValues.GetSound()) text = "Disable Sound";
         soundButton.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
-        soundEnabled = !soundEnabled;
+        staticValues.InvSound();
     }
 
     private void sensivityXChanged() {
         sliderXValue.text = sliderX.value.ToString();
-        xSensivity = sliderX.value;
+        staticValues.SetXSens(sliderX.value);
     }
 
     private void sensivityYChanged() {
         sliderYValue.text = sliderY.value.ToString();
-        ySensivity = sliderY.value;
+        staticValues.SetYSens(sliderY.value);
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditMenu : Menu
+public class ControlsMenu : Menu
 {
     public MainMenu mainMenu;
 
