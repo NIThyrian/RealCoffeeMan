@@ -40,6 +40,7 @@ public class Room : MonoBehaviour
 
     void Start()
     {
+        game = GetComponentInParent<Game>();
         InitializeRoom();
     }
 

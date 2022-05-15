@@ -2,17 +2,22 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    private float mouseSens = 1000f;
+    [SerializeField] Transform player;
+    private StaticValues staticValues;
+    private float mouseSens = 15f;
     private float xRotation = 0f;
+
+    void Awake() {
+        staticValues = new StaticValues();
+    }
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update() {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime * staticValues.GetXSens();
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime * staticValues.GetYSens();
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
