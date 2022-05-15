@@ -30,6 +30,10 @@ public class PlayerScript : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.GetComponent<Rigidbody>() != null) {
+            if (hit.gameObject.CompareTag("Portal")){
+                Game component = GetComponentInParent(typeof(Game)) as Game;
+                component.ChangeLevel();
+            }
             Rigidbody hitBody = hit.collider.attachedRigidbody;
             if(hitBody != null) {
                 Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);

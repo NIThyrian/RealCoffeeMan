@@ -30,7 +30,6 @@ public class Game : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown("f")) ChangeLevel();
     }
 
     public void ChangeLevel() {

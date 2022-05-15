@@ -106,8 +106,6 @@ public class Room : MonoBehaviour
 
     public void CreateBarils()
     {
-
-
         int nbObject = 1;// Random.Range(minBarilPerRoom, maxBarilPerRoom);
         int counter = 0;
         while (counter++ < nbObject)
@@ -120,12 +118,10 @@ public class Room : MonoBehaviour
 
             int numberGenerated = Random.Range(2, 2);
             int counterGenerated = 1;
-            while (counterGenerated <= numberGenerated)
-            {
+            while (counterGenerated <= numberGenerated) {
                 GameObject obj = Instantiate(baril, position, Quaternion.Euler(new Vector3(0, 0, 0)), transform);
                 var objTransform = obj.GetComponent<Transform>();
                 var size = obj.GetComponent<Collider>().bounds.size;
-                Debug.Log(size);
                 objTransform.position = objTransform.position + new Vector3(0, size.y * 0.5f + wallThickness / 2.0f, 0); // Translation to floor (z direction because the prefab is rotated)
                 objTransform.position = objTransform.position + new Vector3(0, (counterGenerated - 1) * size.y, 0); // Baril on top of another
                 counterGenerated++;
