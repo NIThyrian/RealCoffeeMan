@@ -13,6 +13,8 @@ public class CameraScript : MonoBehaviour
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        //transform.localRotation = Quaternion.Euler(0, 0f, 0f);
+        //player.rotation = Quaternion.Euler(0, 0f, 0f);
     }
 
     private void Update() {
