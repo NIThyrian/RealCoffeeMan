@@ -52,17 +52,7 @@ public class Map : MonoBehaviour
 
     public void applyVibeToRooms()
     {
-        Color color = GetComponentInParent<Game>().currentColor;
-        foreach (Material mat in GetComponent<Renderer>().materials)
-        {
-            Debug.Log(mat.name);
-            mat.SetColor("_Color", color);
-        }
 
-        foreach (Material mat in GetComponentsInChildren<Material>())
-        {
-            mat.SetColor("_Color", color);
-        }
     }
 
     public void GenerateMap()

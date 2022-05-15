@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
         var player = GameObject.FindGameObjectWithTag("Player");
         aiPath = GetComponent<AIPath>();
         aiDest = GetComponent<AIDestinationSetter>();
-        // aiDest.target = player.transform;
+        aiDest.target = player.transform;
 
         //game = GetComponentInParent<Game>();
     }
