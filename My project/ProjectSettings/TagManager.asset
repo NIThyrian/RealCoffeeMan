@@ -3,27 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - RangeEnemy
-  - MeleeEnemy
-  - Portal
-  - Enemy
-  - creds
-  - Shop
-  - Coin
-<<<<<<< HEAD
-  - EnemyBullet
-  - SpawnBulletPoint
-=======
->>>>>>> 6c237226cc5171f6c7902e999879d63bc5754d97
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Obstacle
+  - 
   - Water
   - UI
-  - Floor
+  - 
   - 
   - 
   - 

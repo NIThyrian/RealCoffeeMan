@@ -15,12 +15,12 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //game = GetComponentInParent<Game>();
-        maxEnemy = 10;//(int)game.difficultyFactor
-        //StartCoroutine(spawnEnemy(meleeSwarmerInterval, meleeSwarmerPrefab));
-        //StartCoroutine(spawnEnemy(rangeSwarmerInterval, rangeSwarmerPrefab));
-        Instantiate(meleeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
-        Instantiate(rangeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
+        var game = GetComponentInParent<Game>();
+        maxEnemy = (int)game.difficultyFactor * 5;
+        StartCoroutine(spawnEnemy(meleeSwarmerInterval / game.difficultyFactor, meleeSwarmerPrefab));
+        StartCoroutine(spawnEnemy(rangeSwarmerInterval / game.difficultyFactor, rangeSwarmerPrefab));
+        // Instantiate(meleeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
+        //Instantiate(rangeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
     }
 
     // Update is called once per frame

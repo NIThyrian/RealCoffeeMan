@@ -26,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
     protected float shootInterval;
     public float health = 100f;
     protected Animator animator;
-
+    public int damage = 1;
 
     public EnemyState state;
 
@@ -48,18 +48,20 @@ public abstract class Enemy : MonoBehaviour
     {
         difficultyFactor = game.level;
         range = rangeToStopFromPlayer;
-        shootInterval = 2f / difficultyFactor;
+        shootInterval = difficultyFactor;
+        animator.speed = difficultyFactor * 0.5f + 0.5f;
+        health = difficultyFactor * 50 + 100;
 
         aiPath.endReachedDistance = range;
-        aiPath.maxSpeed = 2f * difficultyFactor;
-        aiPath.slowdownDistance = 2 * aiPath.endReachedDistance;
+        aiPath.maxSpeed = 10f * difficultyFactor;
+        aiPath.slowdownDistance = 0;
         OnStartedIdle();
         state = EnemyState.Idle;
     }
 
     protected void UpdateState()
     {
-        if (aiPath.remainingDistance <= range)
+        if (Vector3.Distance(player.transform.position, transform.position) <= range)
         {
             if (state != EnemyState.Attacking)
                 OnStartedAttacking();
@@ -92,17 +94,17 @@ public abstract class Enemy : MonoBehaviour
     protected abstract void Chase();
     protected abstract void Attack();
 
-    protected void OnStartedChasing()
+    protected virtual void OnStartedChasing()
     {
         animator.SetInteger("state", (int)EnemyState.Chasing);
 
     }
-    protected void OnStartedAttacking()
+    protected virtual void OnStartedAttacking()
     {
         animator.SetInteger("state", (int)EnemyState.Attacking);
     }
 
-    protected void OnStartedIdle()
+    protected virtual void OnStartedIdle()
     {
         animator.SetInteger("state", (int)EnemyState.Idle);
     }

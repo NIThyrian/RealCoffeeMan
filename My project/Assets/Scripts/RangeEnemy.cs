@@ -5,8 +5,8 @@ using System.Collections;
 public class RangeEnemy : Enemy
 {
 
-    public GameObject weapon;
-    public float bulletSpeed = 1000.0f;
+    public EnemyBullet weapon;
+    public float bulletSpeed = 100.0f;
     private SpawnPoint spawnPoint;
 
     // Start is called before the first frame update
@@ -15,7 +15,8 @@ public class RangeEnemy : Enemy
         spawnPoint = GetComponentInChildren<SpawnPoint>();
         Setup();
         SetupPathfinding();
-        SetupDifficulty(20.0f);
+        SetupDifficulty(40.0f);
+        damage = (int) (difficultyFactor * 2);
     }
 
     void Update()
@@ -39,9 +40,9 @@ public class RangeEnemy : Enemy
     {
         var pos = player.GetComponent<Collider>().bounds.center - new Vector3(0, 6, 0);
         Vector3 direction = (pos - transform.position).normalized;
-        GameObject bullet = Instantiate(weapon, spawnPoint.transform.position, rb.rotation, transform);
+        EnemyBullet bullet = Instantiate(weapon, spawnPoint.transform.position, rb.rotation);
         bullet.tag = "EnemyBullet";
-
+        bullet.damage = damage;
         bullet.GetComponent<Rigidbody>().velocity += direction * bulletSpeed;
 
     }

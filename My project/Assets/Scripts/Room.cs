@@ -96,11 +96,11 @@ public class Room : MonoBehaviour
     }
 
     public static readonly int[] rotations =
-{
-    0,
-    -90,
-    90,
-    -180
+    {
+        0,
+        -90,
+        90,
+        -180
     };
     public void CreatePortal()
     {
@@ -114,7 +114,6 @@ public class Room : MonoBehaviour
                 var transform = p.GetComponent<Transform>();
                 Debug.Log(rotations[i]);
                 transform.Rotate(new Vector3(0,rotations[i], 0));
-                Debug.Log(i);
             }
         }
     }

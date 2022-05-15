@@ -130,7 +130,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5730942401948382212}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -170,6 +170,7 @@ MonoBehaviour:
   poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
   rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
   health: 100
+  damage: 1
   state: 0
 --- !u!1001 &8791756244461386468
 PrefabInstance:
@@ -268,6 +269,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+--- !u!1 &2470505129187060438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6362012779423518770, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}
+  m_PrefabInstance: {fileID: 8791756244461386468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8547681001343370696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2470505129187060438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb7dbe36ea2d4a4ca51f0ffb5f902e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
 --- !u!4 &2955258556947492972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5981264394212379272, guid: e83a54d568f2a944b9f89f1b580e2e07, type: 3}

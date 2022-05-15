@@ -97,6 +97,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: portail (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6940906426692182379, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
 --- !u!4 &5267907840361930034 stripped
@@ -228,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 6940906426692182379, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_Name
       value: portail
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940906426692182379, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_TagString
+      value: Portal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
