@@ -95,9 +95,28 @@ public class Room : MonoBehaviour
         }
     }
 
+    public static readonly int[] rotations =
+{
+    0,
+    -90,
+    90,
+    -180
+    };
     public void CreatePortal()
     {
-        CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+
+        GameObject p = CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+        for (int i = 0; i<walls.Length; i++)
+        
+        {
+
+            if (walls[i].activeSelf == false){
+                var transform = p.GetComponent<Transform>();
+                Debug.Log(rotations[i]);
+                transform.Rotate(new Vector3(0,rotations[i], 0));
+                Debug.Log(i);
+            }
+        }
     }
     public void CreateShop()
     {
@@ -156,7 +175,7 @@ public class Room : MonoBehaviour
         {
             float proba = Random.Range(0.0f, 1.0f);
             walls[i].SetActive(!status[i]);
-            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor);
+            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor &&roomType != RoomType.Start);
 
         }
     }
