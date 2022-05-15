@@ -1,27 +1,29 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    private float jumpHeight = 5f;
     private Vector3 velocity;
     private bool isGrounded = false;
     private float gravity = -9.81f;
-    public int maxHealth;
-    public int currentHealth;
+
     public int speed = 20;
-    public int speedUpgradeIncrement;
-    public int damage;
-    public int damageUpgradeIncrement;
+    public int speedUpgradeIncrement = 5;
+    public int damage = 10;
+    public int damageUpgradeIncrement = 5;
+    private float jumpHeight;
+    private bool nearShop;
+
     private GameObject[] shops;
     private Game game;
 
     private void Start() {
         game = GetComponentInParent(typeof(Game)) as Game; 
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
-        jumpHeight = speed / 2;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
-        currentHealth = maxHealth;
+        jumpHeight = speed / 2;
+        
         shops = GameObject.FindGameObjectsWithTag("Shop");
     }
 
@@ -39,11 +41,20 @@ public class PlayerScript : MonoBehaviour
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        foreach( GameObject shop in shops) {
-            if (Vector3.Distance(shop.transform.position, transform.position) < 5 && Input.GetKeyDown("e")) {
-                game.E();
-            }
+        foreach(GameObject shop in shops) {
+            if(Vector3.Distance(shop.transform.position, transform.position) < 5) {
+                nearShop = true;
+                break;
+            } else nearShop = false;
         }
+
+        if(nearShop) {
+            if(Input.GetKeyDown("e")) {
+                game.E();
+                game.eText.SetActive(false);
+            }
+            if(!Cursor.visible) game.eText.SetActive(true);
+        } else game.eText.SetActive(false);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -69,8 +80,8 @@ public class PlayerScript : MonoBehaviour
                 Destroy(hit.gameObject);
             }
 
-            if (hit.gameObject.CompareTag("Portal"))game.ChangeLevel();
-
+            if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
+            
             Rigidbody hitBody = hit.collider.attachedRigidbody;
             if(hitBody != null) {
                 Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
