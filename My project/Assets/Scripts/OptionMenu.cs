@@ -24,18 +24,12 @@ public class OptionMenu : Menu
 
         soundButton = transform.Find("SoundButton");
         soundButton.GetComponent<Button>().onClick.AddListener(delegate { soundClicked(); });
-<<<<<<< HEAD
-        sliderX = transform.Find("SliderXPanel").GetChild(0).GetComponent<Slider>();
-        sliderY.onValueChanged.AddListener(delegate { sensivityXChanged(); });
-        sliderX = transform.Find("SliderYPanel").GetChild(0).GetComponent<Slider>();
-=======
 
         sliderX = transform.Find("SliderXPanel").GetChild(0).GetComponent<Slider>();
         sliderX.onValueChanged.AddListener(delegate { sensivityXChanged(); });
         sliderXValue = transform.Find("SliderXPanel").GetChild(2).GetComponent<TextMeshProUGUI>();
 
         sliderY = transform.Find("SliderYPanel").GetChild(0).GetComponent<Slider>();
->>>>>>> 2e0f81066055e86b53110d3d69654b7388795d4f
         sliderY.onValueChanged.AddListener(delegate { sensivityYChanged(); });
         sliderYValue = transform.Find("SliderYPanel").GetChild(2).GetComponent<TextMeshProUGUI>();
     }
