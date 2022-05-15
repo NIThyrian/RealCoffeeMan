@@ -134,7 +134,7 @@ public class UIShop : MonoBehaviour
         if (game.playerDict["CashHeld"] <= priceDict["BootsCurrentPrice"])
         {
             bootsItem.GetComponent<Button>().interactable = false;
-            bootsItem.GetComponent<Image>().color = Color.white;
+            bootsItem.GetComponent<Image>().color = Color.gray;
 
         }
         else {
