@@ -128,10 +128,12 @@ public class UIShop : MonoBehaviour
     }
 
     public void OpenShop() {
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
         Game.isPaused = true;
+        UpdatePrices();
 
         gameObject.SetActive(true);
         playerUI.SetActive(false);
@@ -147,7 +149,7 @@ public class UIShop : MonoBehaviour
         playerUI.SetActive(true);
     }
 
-    private void RandomizeCurrencies() {
+    public void RandomizeCurrencies() {
         priceDict["CaPrice"] = Random.Range(0, 100);
         priceDict["GoldPrice"] = Random.Range(0, 100);
         priceDict["NotACubePrice"] = Random.Range(0, 100);
@@ -178,6 +180,8 @@ public class UIShop : MonoBehaviour
             game.playerDict["BootsPurchased"] += 1;
             PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
             player.speed += player.speedUpgradeIncrement;
+            player.jumpHeight += player.speed/3;
+
             UpdatePrices();
         }
     }

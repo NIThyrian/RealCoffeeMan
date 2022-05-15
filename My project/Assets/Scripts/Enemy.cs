@@ -22,7 +22,7 @@ public abstract class Enemy : MonoBehaviour
     protected Game game;
     protected Rigidbody rb;
     protected float range;
-    protected float difficultyFactor;
+    protected int difficultyFactor;
     protected float shootInterval;
     public float health = 100f;
     protected Animator animator;
@@ -46,11 +46,11 @@ public abstract class Enemy : MonoBehaviour
 
     protected void SetupDifficulty(float rangeToStopFromPlayer)
     {
-        difficultyFactor = game.level;
+        difficultyFactor = game.difficultyFactor;
         range = rangeToStopFromPlayer;
         shootInterval = difficultyFactor;
         animator.speed = difficultyFactor * 0.5f + 0.5f;
-        health = difficultyFactor * 50 + 100;
+        health = difficultyFactor * 2 + 25;
 
         aiPath.endReachedDistance = range;
         aiPath.maxSpeed = 10f * difficultyFactor;

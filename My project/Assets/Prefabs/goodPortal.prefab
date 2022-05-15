@@ -39,6 +39,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7275489326223711794}
     m_Modifications:
+    - target: {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182378, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -103,7 +107,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Portal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
 --- !u!1001 &3921500176675651831
 PrefabInstance:
@@ -178,6 +183,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7275489326223711794}
     m_Modifications:
+    - target: {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6940906426692182378, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -242,5 +251,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Portal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6940906426595377066, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ce4f20ab826b5f449a2927e317f0e28, type: 3}
