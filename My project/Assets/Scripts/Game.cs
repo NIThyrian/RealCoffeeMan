@@ -26,13 +26,13 @@ public class Game : MonoBehaviour
             {"SteakPurchased", 0},
             {"GunPurchased", 0},
             {"BootsPurchased", 0},
-            {"CoffeePurchased", 1},
+            {"CoffeePurchased", 0},
             {"CaHeld", 0},
             {"GoldHeld", 0},
             {"NotACubeHeld", 0},
             {"PoopHeld", 0},
             {"RocketHeld", 0},
-            {"CashHeld", 1150}
+            {"CashHeld", 0}
         };
     
     private StaticValues staticValues;

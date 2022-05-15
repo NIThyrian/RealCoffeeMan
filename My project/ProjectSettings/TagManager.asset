@@ -14,6 +14,7 @@ TagManager:
   - OpenShop
   - UniversLabel
   - GameOver
+  - Win
   layers:
   - Default
   - TransparentFX

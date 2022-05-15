@@ -156,7 +156,8 @@ MonoBehaviour:
   poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
   rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
   health: 100
-  damage: 1
+  damage: 10
+  startFollowDistance: 60
   state: 0
   weapon: {fileID: 4135328339773023499, guid: 355521bbb5e8c9243addc84cf342d237, type: 3}
   bulletSpeed: 100
