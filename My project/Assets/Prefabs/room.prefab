@@ -2380,7 +2380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6736848202282338687, guid: bc0120ed25d1f324fba830d76512822b, type: 3}
       propertyPath: m_RenderMode
