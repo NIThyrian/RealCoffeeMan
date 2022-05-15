@@ -95,9 +95,28 @@ public class Room : MonoBehaviour
         }
     }
 
+    public static readonly int[] rotations =
+{
+    0,
+    -90,
+    90,
+    -180
+    };
     public void CreatePortal()
     {
-        CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+
+        GameObject p = CreatePropAtPosition(portal, new Vector3(0, 0, 0));
+        for (int i = 0; i<walls.Length; i++)
+        
+        {
+
+            if (walls[i].activeSelf == false){
+                var transform = p.GetComponent<Transform>();
+                Debug.Log(rotations[i]);
+                transform.Rotate(new Vector3(0,rotations[i], 0));
+                Debug.Log(i);
+            }
+        }
     }
     public void CreateShop()
     {
@@ -111,13 +130,8 @@ public class Room : MonoBehaviour
     public GameObject CreatePropAtPosition(GameObject prop, Vector3 pos)
     {
         var position = pos;
-        Debug.Log("POSITION : " + position);
-        Debug.Log("TRANSFORM : " + transform.position);
-        Debug.Log("LOCAL POS : " + transform.localPosition);
         GameObject obj = Instantiate(prop, transform.position + position, Quaternion.identity, transform);
         var objTransform = obj.GetComponent<Transform>();
-        Debug.Log("POS TRASN : " + objTransform.position);
-        Debug.Log("POS LOC TRASN : " + objTransform.localPosition);
         //Vector3 size = new Vector3();
         if (obj.GetComponent<Collider>() != null)
         {
@@ -161,7 +175,7 @@ public class Room : MonoBehaviour
         {
             float proba = Random.Range(0.0f, 1.0f);
             walls[i].SetActive(!status[i]);
-            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor);
+            doors[i].SetActive(status[i] && proba < chanceRoomHavingDoor &&roomType != RoomType.Start);
 
         }
     }

@@ -24,14 +24,15 @@ public class EnemySpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    private IEnumerator spawnEnemy(float interval, GameObject enemy){
+    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    {
         enemyCounter++;
         yield return new WaitForSeconds(interval);
         GameObject newEnemy = Instantiate(enemy, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
         if (enemyCounter >= maxEnemy)
         {
             StopAllCoroutines();
-          
+
         }
         else { StartCoroutine(spawnEnemy(interval, enemy)); }
     }

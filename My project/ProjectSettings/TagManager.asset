@@ -8,10 +8,14 @@ TagManager:
   - MeleeEnemy
   - Portal
   - Enemy
+  - creds
   - Shop
   - Coin
+<<<<<<< HEAD
   - EnemyBullet
   - SpawnBulletPoint
+=======
+>>>>>>> 6c237226cc5171f6c7902e999879d63bc5754d97
   layers:
   - Default
   - TransparentFX

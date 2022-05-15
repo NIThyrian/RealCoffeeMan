@@ -6,6 +6,7 @@ using TMPro;
 public class UIShop : MonoBehaviour
 {
     [SerializeField] private Game game;
+    [SerializeField] private GameObject playerUI;
 
     private Dictionary<string, int> priceDict = new Dictionary<string, int> {
             {"SteakPrice", 10},
@@ -27,19 +28,9 @@ public class UIShop : MonoBehaviour
         RandomizeCurrencies();
         SetBtnActions();
         UpdatePrices();
-        //Open();
     }
 
-    public void Open()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        gameObject.SetActive(true);
-
-    }
     private void Update() {
-  
-
         if(Input.GetKeyDown(KeyCode.Escape)) CloseShop();
     }
 
@@ -75,8 +66,7 @@ public class UIShop : MonoBehaviour
         closeBtn.GetComponent<Button>().onClick.AddListener(delegate { CloseShop(); } );
     }
 
-    private void UpdatePrices()
-    {
+    private void UpdatePrices() {
         priceDict["SteakCurrentPrice"] = Mathf.RoundToInt(priceDict["SteakPrice"] * Mathf.Pow(1.1f, game.playerDict["SteakPurchased"]));
         Transform steakItem = transform.Find("SteakItem");
         steakItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["SteakCurrentPrice"]).ToString();
@@ -116,57 +106,45 @@ public class UIShop : MonoBehaviour
         Transform playerCurrency = transform.Find("PlayerCurrency");
         playerCurrency.GetChild(0).GetComponent<TextMeshProUGUI>().text = (game.playerDict["CashHeld"]).ToString();
 
-        if (game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"])
-        {
-            steakItem.GetComponent<Button>().interactable = false;
-            steakItem.GetComponent<Image>().color = Color.gray;
-
-        }
-        else
-        {
-            steakItem.GetComponent<Button>().interactable = true;
-            steakItem.GetComponent<Image>().color = Color.white;
-
-        }
-        if (game.playerDict["CashHeld"] <= priceDict["GunCurrentPrice"])
-        {
-            gunItem.GetComponent<Button>().interactable = false;
-            gunItem.GetComponent<Image>().color = Color.gray;
-
-        }
-        else {
-            gunItem.GetComponent<Button>().interactable = true;
-            gunItem.GetComponent<Image>().color = Color.white;
-
-        }
-
-        if (game.playerDict["CashHeld"] <= priceDict["BootsCurrentPrice"])
-        {
-            bootsItem.GetComponent<Button>().interactable = false;
-            bootsItem.GetComponent<Image>().color = Color.gray;
-
-        }
-        else {
-            bootsItem.GetComponent<Button>().interactable = true;
-            bootsItem.GetComponent<Image>().color = Color.white;
-        }
-
-        if (game.playerDict["CashHeld"] <= priceDict["CoffeeCurrentPrice"])
-        {
-            coffeeItem.GetComponent<Button>().interactable = false;
-            coffeeItem.GetComponent<Image>().color = Color.gray;
-        }
-        else
-        {
-            coffeeItem.GetComponent<Button>().interactable = true;
-            coffeeItem.GetComponent<Image>().color = Color.white;
-        }
+        if (game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"] || game.currentHealth >= game.maxHealth) steakItem.GetComponent<Image>().color = Color.gray;
+        else steakItem.GetComponent<Image>().color = Color.white;
+        if (game.playerDict["CashHeld"] <= priceDict["GunCurrentPrice"]) gunItem.GetComponent<Image>().color = Color.gray;
+        else gunItem.GetComponent<Image>().color = Color.white;
+        if (game.playerDict["CashHeld"] <= priceDict["BootsCurrentPrice"]) bootsItem.GetComponent<Image>().color = Color.gray;
+        else bootsItem.GetComponent<Image>().color = Color.white;
+        if (game.playerDict["CashHeld"] <= priceDict["CoffeeCurrentPrice"]) coffeeItem.GetComponent<Image>().color = Color.gray;
+        else coffeeItem.GetComponent<Image>().color = Color.white;
+        
+        if(game.playerDict["CaHeld"] < 1) caCoin.GetComponent<Image>().color = Color.gray;
+        else caCoin.GetComponent<Image>().color = Color.white;
+        if(game.playerDict["PoopHeld"] < 1) poopCoin.GetComponent<Image>().color = Color.gray;
+        else poopCoin.GetComponent<Image>().color = Color.white;
+        if(game.playerDict["NotACubeHeld"] < 1) notACubeCoin.GetComponent<Image>().color = Color.gray;
+        else notACubeCoin.GetComponent<Image>().color = Color.white;
+        if(game.playerDict["RocketHeld"] < 1) rocketCoin.GetComponent<Image>().color = Color.gray;
+        else rocketCoin.GetComponent<Image>().color = Color.white;
+        if(game.playerDict["GoldHeld"] < 1) goldCoin.GetComponent<Image>().color = Color.gray;
+        else goldCoin.GetComponent<Image>().color = Color.white;
     }
 
+    public void OpenShop() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+        Game.isPaused = true;
+
+        gameObject.SetActive(true);
+        playerUI.SetActive(false);
+    }
     public void CloseShop() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1;
+        Game.isPaused = false;
+        playerUI.transform.Find("CashHeld").GetChild(0).GetComponent<TextMeshProUGUI>().text = game.playerDict["CashHeld"].ToString();
+
         gameObject.SetActive(false);
+        playerUI.SetActive(true);
     }
 
     private void RandomizeCurrencies() {
@@ -178,12 +156,10 @@ public class UIShop : MonoBehaviour
     }
 
     private void ClickedSteak() {
-        if(game.playerDict["CashHeld"] >= priceDict["SteakCurrentPrice"]) {
+        if(game.playerDict["CashHeld"] >= priceDict["SteakCurrentPrice"] && game.currentHealth != game.maxHealth) {
             game.playerDict["CashHeld"] -= priceDict["SteakCurrentPrice"];
             game.playerDict["SteakPurchased"] += 1;
-            PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-            player.currentHealth += 30;
-            if (player.currentHealth > player.maxHealth) player.currentHealth = player.maxHealth;
+            game.TakeDamage(-10);
             UpdatePrices();
         }
     }
