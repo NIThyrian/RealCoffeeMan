@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] GameObject goldCoin;
+
     protected AIPath aiPath;
     protected AIDestinationSetter aiDest;
     protected float range;
@@ -29,7 +31,8 @@ public abstract class Enemy : MonoBehaviour
         float randPoop = UnityEngine.Random.Range(0f, 1f);
         float randRocket = UnityEngine.Random.Range(0f, 1f);
 
-
+        Instantiate(goldCoin, transform.position, Quaternion.identity);
+        Destroy(gameObject);
 
         /*
         if(randomAmmo < ammoDropChance && randomMedkit < medkitDropChance) 

@@ -200,6 +200,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+  health: 100
+  goldCoin: {fileID: 3710729917388956080, guid: 644a35beb41e4cf42ba5e312bfd79138, type: 3}
 --- !u!1001 &8791756244461386468
 PrefabInstance:
   m_ObjectHideFlags: 0
