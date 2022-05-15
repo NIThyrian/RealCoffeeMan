@@ -19,14 +19,15 @@ public class EnemySpawner : MonoBehaviour
         maxEnemy = 10;//(int)game.difficultyFactor
         //StartCoroutine(spawnEnemy(meleeSwarmerInterval, meleeSwarmerPrefab));
         //StartCoroutine(spawnEnemy(rangeSwarmerInterval, rangeSwarmerPrefab));
-        Instantiate(meleeSwarmerPrefab, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
+        Instantiate(meleeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
+        Instantiate(rangeSwarmerPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
     }
 
     // Update is called once per frame
     private IEnumerator spawnEnemy(float interval, GameObject enemy){
         enemyCounter++;
         yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
+        GameObject newEnemy = Instantiate(enemy, transform.position + new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f)), Quaternion.identity, transform);
         if (enemyCounter >= maxEnemy)
         {
             StopAllCoroutines();

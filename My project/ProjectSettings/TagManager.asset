@@ -9,6 +9,9 @@ TagManager:
   - Portal
   - Enemy
   - Shop
+  - Coin
+  - EnemyBullet
+  - SpawnBulletPoint
   layers:
   - Default
   - TransparentFX
