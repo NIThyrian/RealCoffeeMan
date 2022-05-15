@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public int damage;
     public int damageUpgradeIncrement;
     private GameObject[] shops;
+    private Game game;
+
 
 
     private void Start() {
@@ -55,11 +57,29 @@ public class PlayerScript : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.GetComponent<Rigidbody>() != null) {
-            if (hit.gameObject.CompareTag("Portal")){
-                Game component = GetComponentInParent(typeof(Game)) as Game;
-                component.ChangeLevel();
-            }
-           
+            if(hit.gameObject.CompareTag("Coin")) {
+                switch(hit.gameObject.name) {
+                    case("CaCoin(Clone)"):
+                        game.playerDict["CaHeld"] += 1;
+                        break;
+                    case("RocketCoin(Clone)"):
+                        game.playerDict["RocketHeld"] += 1;
+                        break;
+                    case("NotACubeCoin(Clone)"):
+                        game.playerDict["NotACubeHeld"] += 1;
+                        break;
+                    case("PoopCoin(Clone)"):
+                        game.playerDict["PoopHeld"] += 1;
+                        break;
+                    default:
+                        game.playerDict["GoldHeld"] += 1;
+                        break;
+                }
+                Destroy(hit.gameObject);
+            } 
+            
+            if (hit.gameObject.CompareTag("Portal")) game.ChangeLevel();
+
             Rigidbody hitBody = hit.collider.attachedRigidbody;
             if(hitBody != null) {
                 Vector3 moveDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);

@@ -151,6 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2833f70b0b6624141b3b6b76e7df68e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldCoin: {fileID: 7592391832751339561, guid: 644a35beb41e4cf42ba5e312bfd79138, type: 3}
+  caCoin: {fileID: 3710729917388956080, guid: 23062bde1ef3ea24c9af87c61bcc66ed, type: 3}
+  notACubeCoin: {fileID: 3710729917388956080, guid: 2b752bca920281a4fb6736cffa82108c, type: 3}
+  poopCoin: {fileID: 3710729917388956080, guid: 4b721ef58cb209e41833f8e1890711eb, type: 3}
+  rocketCoin: {fileID: 3710729917388956080, guid: 59a259b3fbd11664bbf33c9ddf1be3e7, type: 3}
+  health: 100
 --- !u!136 &-8469361248434112613
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -162,9 +168,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.75
-  m_Height: 8
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!195 &-2934812204049814505
 NavMeshAgent:
   m_ObjectHideFlags: 0

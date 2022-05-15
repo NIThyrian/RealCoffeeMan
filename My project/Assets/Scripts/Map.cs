@@ -61,13 +61,13 @@ public class Map : MonoBehaviour
 
         List<Direction> map = new List<Direction>(GenerateDirections());
 
-        Vector3 position = transform.position;
+        Vector3 position = new Vector3(0, 0, 0);
         Room spawnRoom = Instantiate(room, position, Quaternion.identity, transform).GetComponent<Room>();
         spawnRoom.SetType(Room.RoomType.Start);
         rooms.Add(spawnRoom);
         spawnRoom.UpdateRooms(new bool[] { true, false, false, false }); // Forward
         Vector3 dirVec = directions[(int)map[0]];
-        dirVec.Scale(roomSize);
+        dirVec.Scale(new Vector3(roomSize.x, 1, roomSize.y));
 
         position += dirVec;
 
