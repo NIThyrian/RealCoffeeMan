@@ -25,7 +25,6 @@ public class MeleeEnemy : Enemy
     public void AttackFront()
     {
         var dist = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log("Distance " + dist + " vs Range : " + range);
         if (dist <= range)
         {
             game.TakeDamage(damage);

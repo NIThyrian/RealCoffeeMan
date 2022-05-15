@@ -32,10 +32,7 @@ public class Game : MonoBehaviour
     private void Awake() {
         currentHealth = maxHealth;
     }
-    public void Update()
-    {
-        Debug.Log(playerDict);
-    }
+    
     void Start() {
         difficultyFactor = 1;
         currentColor = Random.ColorHSV();

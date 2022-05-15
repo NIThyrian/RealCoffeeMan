@@ -23,8 +23,6 @@ public class PlayerScript : MonoBehaviour
         speed += game.playerDict["BootsPurchased"] * speedUpgradeIncrement;
         jumpHeight = ((float) speed) / 3f;
         damage += game.playerDict["GunPurchased"] * damageUpgradeIncrement;
-        
-        shops = GameObject.FindGameObjectsWithTag("Shop");
     }
 
     private void Update() {
@@ -41,6 +39,7 @@ public class PlayerScript : MonoBehaviour
         velocity.y += 2 * gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        shops = GameObject.FindGameObjectsWithTag("Shop");
         foreach(GameObject shop in shops) {
             if(Vector3.Distance(shop.transform.position, transform.position) < 5) {
                 nearShop = true;
@@ -58,9 +57,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        Debug.Log("TAG : " + hit.gameObject.tag);
         if(hit.gameObject.CompareTag("Coin")) {
-
             switch(hit.gameObject.name) {
                 case("CaCoin(Clone)"):
                     game.playerDict["CaHeld"] += 1;

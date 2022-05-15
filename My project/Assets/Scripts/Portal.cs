@@ -17,13 +17,10 @@ public class Portal : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
-        Debug.Log(collision.transform.root.CompareTag("Player"));
         if (collision.transform.root.CompareTag("Player"))
         {
             
             Game game = GetComponentInParent(typeof(Game)) as Game;
-            Debug.Log(game);
 
             if (game != null)
             {
