@@ -66,7 +66,8 @@ public class UIShop : MonoBehaviour
         closeBtn.GetComponent<Button>().onClick.AddListener(delegate { CloseShop(); } );
     }
 
-    private void UpdatePrices() {
+    private void UpdatePrices()
+    {
         priceDict["SteakCurrentPrice"] = Mathf.RoundToInt(priceDict["SteakPrice"] * Mathf.Pow(1.1f, game.playerDict["SteakPurchased"]));
         Transform steakItem = transform.Find("SteakItem");
         steakItem.GetChild(0).GetComponent<TextMeshProUGUI>().text = (priceDict["SteakCurrentPrice"]).ToString();
@@ -106,19 +107,55 @@ public class UIShop : MonoBehaviour
         Transform playerCurrency = transform.Find("PlayerCurrency");
         playerCurrency.GetChild(0).GetComponent<TextMeshProUGUI>().text = (game.playerDict["CashHeld"]).ToString();
 
-        if(game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"]) steakItem.GetComponent<Button>().interactable = false;
-        else steakItem.GetComponent<Button>().interactable = true;
-        if(game.playerDict["CashHeld"] <= priceDict["GunCurrentPrice"]) gunItem.GetComponent<Button>().interactable = false;
-        else gunItem.GetComponent<Button>().interactable = true;
-        
-        if(game.playerDict["CashHeld"] <= priceDict["BootsCurrentPrice"]) bootsItem.GetComponent<Button>().interactable = false;
-        else bootsItem.GetComponent<Button>().interactable = true;
-        
-        if(game.playerDict["CashHeld"] <= priceDict["CoffeeCurrentPrice"]) coffeeItem.GetComponent<Button>().interactable = false;
-        else coffeeItem.GetComponent<Button>().interactable = true;
+        if (game.playerDict["CashHeld"] <= priceDict["SteakCurrentPrice"])
+        {
+            steakItem.GetComponent<Button>().interactable = false;
+            steakItem.GetComponent<Image>().color = Color.gray;
+
+        }
+        else
+        {
+            steakItem.GetComponent<Button>().interactable = true;
+            steakItem.GetComponent<Image>().color = Color.white;
+
+        }
+        if (game.playerDict["CashHeld"] <= priceDict["GunCurrentPrice"])
+        {
+            gunItem.GetComponent<Button>().interactable = false;
+            gunItem.GetComponent<Image>().color = Color.gray;
+
+        }
+        else {
+            gunItem.GetComponent<Button>().interactable = true;
+            gunItem.GetComponent<Image>().color = Color.white;
+
+        }
+
+        if (game.playerDict["CashHeld"] <= priceDict["BootsCurrentPrice"])
+        {
+            bootsItem.GetComponent<Button>().interactable = false;
+            bootsItem.GetComponent<Image>().color = Color.white;
+
+        }
+        else {
+            bootsItem.GetComponent<Button>().interactable = true;
+            bootsItem.GetComponent<Image>().color = Color.white;
+        }
+
+        if (game.playerDict["CashHeld"] <= priceDict["CoffeeCurrentPrice"])
+        {
+            coffeeItem.GetComponent<Button>().interactable = false;
+            coffeeItem.GetComponent<Image>().color = Color.gray;
+        }
+        else
+        {
+            coffeeItem.GetComponent<Button>().interactable = true;
+            coffeeItem.GetComponent<Image>().color = Color.white;
+        }
     }
 
     private void CloseShop() {
+        Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }
 
@@ -134,6 +171,9 @@ public class UIShop : MonoBehaviour
         if(game.playerDict["CashHeld"] >= priceDict["SteakCurrentPrice"]) {
             game.playerDict["CashHeld"] -= priceDict["SteakCurrentPrice"];
             game.playerDict["SteakPurchased"] += 1;
+            PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+            player.currentHealth += 30;
+            if (player.currentHealth > player.maxHealth) player.currentHealth = player.maxHealth;
             UpdatePrices();
         }
     }
@@ -141,6 +181,8 @@ public class UIShop : MonoBehaviour
         if(game.playerDict["CashHeld"] >= priceDict["GunCurrentPrice"]) {
             game.playerDict["CashHeld"] -= priceDict["GunCurrentPrice"];
             game.playerDict["GunPurchased"] += 1;
+            PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+            player.damage += player.damageUpgradeIncrement;
             UpdatePrices();
         }
     }
@@ -148,6 +190,8 @@ public class UIShop : MonoBehaviour
         if(game.playerDict["CashHeld"] >= priceDict["BootsCurrentPrice"]) {
             game.playerDict["CashHeld"] -= priceDict["BootsCurrentPrice"];
             game.playerDict["BootsPurchased"] += 1;
+            PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+            player.speed += player.speedUpgradeIncrement;
             UpdatePrices();
         }
     }

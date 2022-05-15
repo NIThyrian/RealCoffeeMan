@@ -10,16 +10,16 @@ public class Game : MonoBehaviour
     private GameObject mapReference; 
 
     public Dictionary<string, int> playerDict = new Dictionary<string, int> {
-            {"SteakPurchased", 10},
-            {"GunPurchased", 1},
-            {"BootsPurchased", 1},
+            {"SteakPurchased", 0},
+            {"GunPurchased", 0},
+            {"BootsPurchased", 0},
             {"CoffeePurchased", 1},
-            {"CaHeld", 1},
-            {"GoldHeld", 1},
-            {"NotACubeHeld", 1},
-            {"PoopHeld", 1},
-            {"RocketHeld", 1},
-            {"CashHeld", 100}
+            {"CaHeld", 0},
+            {"GoldHeld", 0},
+            {"NotACubeHeld", 0},
+            {"PoopHeld", 0},
+            {"RocketHeld", 0},
+            {"CashHeld", 0}
         };
 
     void Start() {
