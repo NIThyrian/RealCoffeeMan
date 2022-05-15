@@ -554,7 +554,7 @@ MonoBehaviour:
   - {fileID: 3710729917388956080, guid: a91fe75d15f73f54cb2357f9569a2117, type: 3}
   - {fileID: 1909547928257965523, guid: 7369958e9873afc4c9a03e42f7c1f1c1, type: 3}
   - {fileID: 4207504370777256383, guid: 4849764351adc3f49b267a5e67597aba, type: 3}
-  portal: {fileID: 8276839334163216304, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
+  portal: {fileID: 4892468305659460082, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
   spawnPositions:
   - {x: -20, y: 0, z: 20}
   - {x: -3, y: 0, z: -10}
