@@ -11,21 +11,21 @@ public class GunMika : MonoBehaviour
     public float vitesseBalles = 50f;
 
     private StaticValues staticValues;
+    private Game game;
 
     void Start() {
+        game = GetComponentInParent(typeof(Game)) as Game; 
         staticValues = new StaticValues();
     }
 
     void Update() {
-        if(Input.GetButtonDown("Fire1") && !Game.isPaused) {
-            Shoot();
-        }
+        if(Input.GetButtonDown("Fire1") && !Game.isPaused) Shoot();
     }
 
     void Shoot() {
         gunFire.Play();
-        Debug.Log(staticValues.GetSound());
-        //if(staticValues.GetSound()) audioSource.PlayOneShot(gunShot, 0.7F);
+        Debug.Log(game);
+        if(staticValues.GetSound()) game.GetComponent<AudioSource>().PlayOneShot(gunShot, 0.7F);
 
         GameObject bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
         bullet.GetComponent<Rigidbody>().velocity = spawnBullet.forward * vitesseBalles;
