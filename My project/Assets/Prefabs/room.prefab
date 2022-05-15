@@ -543,7 +543,7 @@ MonoBehaviour:
   - {fileID: 5129759986425671467}
   - {fileID: 5129759984872272314}
   doors: []
-  baril: {fileID: 1527297205147476436, guid: e27656d60759bc546a44137ca8060659, type: 3}
+  baril: {fileID: 2171093495516224349, guid: 06d14248d1756b0459d664011531063b, type: 3}
   props:
   - {fileID: 6995401850718818081, guid: ccc2fce18e961cf438c8855ed3b56daa, type: 3}
   - {fileID: 5527408754918517715, guid: 09531533bd69a774ca85e66be9e0c907, type: 3}
@@ -554,7 +554,7 @@ MonoBehaviour:
   - {fileID: 3710729917388956080, guid: a91fe75d15f73f54cb2357f9569a2117, type: 3}
   - {fileID: 1909547928257965523, guid: 7369958e9873afc4c9a03e42f7c1f1c1, type: 3}
   - {fileID: 4207504370777256383, guid: 4849764351adc3f49b267a5e67597aba, type: 3}
-  portal: {fileID: 8276839334163216304, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
+  portal: {fileID: 4892468305659460082, guid: 13c2612e923ca5b40a485d5af0c42495, type: 3}
   spawnPositions:
   - {x: -20, y: 0, z: 20}
   - {x: -3, y: 0, z: -10}

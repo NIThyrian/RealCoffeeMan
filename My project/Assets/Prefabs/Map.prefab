@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fa13e1f33ae864f836a70b96388bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRooms: 5
   room: {fileID: 5129759986117127184, guid: e23e6c2a9dea59244b5f26a890a16321, type: 3}
+  player: {fileID: 2302836852206782446, guid: 7936a145c648ed54e98b15d0cef580a4, type: 3}
+  maxRooms: 5
   roomSize: {x: 50, y: 50}
-  player: {fileID: 1023774033364404843, guid: da208d1cd16aff448ad36c48605a9825, type: 3}
